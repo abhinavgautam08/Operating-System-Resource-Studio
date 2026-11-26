@@ -1038,3 +1038,12 @@ def stat(label: str, value: str, note: str = "", tone: str = "") -> None:
     )
 
 
+def stat_row(items: list[tuple[str, str, str] | tuple[str, str, str, str]]) -> None:
+    cols = st.columns(len(items))
+    for col, item in zip(cols, items):
+        with col:
+            stat(*item)
+
+
+def _init_session_state() -> None:
+    defaults = {
