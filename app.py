@@ -310,3 +310,12 @@ class Process:
 
 def _build_segments_with_idle(timeline: list[tuple[int, int, str]]) -> list[dict]:
     segments = []
+    current_time = 0
+
+    for start, end, pid in timeline:
+        if start > current_time:
+            segments.append({"pid": "IDLE", "start": current_time, "end": start})
+        segments.append({"pid": pid, "start": start, "end": end})
+        current_time = end
+
+    return segments
