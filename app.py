@@ -1385,3 +1385,12 @@ def render_deadlock_page(ds: dict) -> None:
                         "Allocation": str(t["allocation"]),
                         "Work After": str(t["work_after"]),
                     }
+                    for t in dl_res["trace"]
+                ]
+                st.dataframe(pd.DataFrame(trace_rows), width="stretch", hide_index=True)
+            else:
+                st.markdown('<div class="note">No process could satisfy its remaining Need with the initial Available vector.</div>', unsafe_allow_html=True)
+        with t_req:
+            rc1, rc2, rc3 = st.columns([1, 2, 1])
+            with rc1:
+                req_proc = st.number_input("Process Index (0-based)", min_value=0, max_value=max(0, len(allocation) - 1), value=0, step=1)
