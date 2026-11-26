@@ -206,3 +206,12 @@ PRESETS: dict[str, dict] = {
             "disk_size": 200,
             "direction": "right",
         },
+    },
+    "Idle Gaps & Convoy": {
+        "quantum": 3,
+        "processes": [
+            {"pid": "P1", "arrival": 1, "burst": 9, "priority": 3},
+            {"pid": "P2", "arrival": 2, "burst": 2, "priority": 1},
+            {"pid": "P3", "arrival": 3, "burst": 1, "priority": 2},
+            {"pid": "P4", "arrival": 16, "burst": 4, "priority": 1},
+            {"pid": "P5", "arrival": 17, "burst": 3, "priority": 2},
