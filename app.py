@@ -388,3 +388,12 @@ def _run_non_preemptive(processes: list[Process], alg: str) -> tuple[dict[str, i
     timeline: list[tuple[int, int, str]] = []
 
     while pending:
+        ready = [p for p in pending if p.arrival <= now]
+        if not ready:
+            now = min(p.arrival for p in pending)
+            ready = [p for p in pending if p.arrival <= now]
+
+        chosen = _pick_next_process(ready, alg, original_order)
+        start = now
+        now += chosen.burst
+        timeline.append((start, now, chosen.pid))
