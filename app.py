@@ -1602,3 +1602,11 @@ def render_app() -> None:
     renderer(st.session_state.dataset)
 
     st.markdown(
+        '<div class="footer">OS Resource Studio · CPU Scheduling, Contiguous Memory, Banker\'s Deadlock Avoidance & Disk Head Scheduling</div>',
+        unsafe_allow_html=True,
+    )
+
+
+class TestScheduler(unittest.TestCase):
+    def setUp(self) -> None:
+        ds = get_preset("Lab Standard (Default)")
