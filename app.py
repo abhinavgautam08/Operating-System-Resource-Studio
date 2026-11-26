@@ -1168,3 +1168,12 @@ def render_overview_page(ds: dict) -> None:
 
 def _clean_process_rows(edited_df: pd.DataFrame) -> list[dict]:
     clean = []
+    for _, row in edited_df.dropna(how="all").iterrows():
+        pid = str(row.get("pid", "") or "").strip()
+        if not pid:
+            continue
+        clean.append(
+            {
+                "pid": pid,
+                "arrival": int(row["arrival"]) if pd.notna(row["arrival"]) else 0,
+                "burst": int(row["burst"]) if pd.notna(row["burst"]) else 1,
