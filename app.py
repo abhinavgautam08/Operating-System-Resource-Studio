@@ -1229,3 +1229,12 @@ def render_cpu_page(ds: dict) -> None:
         processes = [Process(**p) for p in clean_procs]
 
         cpu_results = {a: cpu_schedule(processes, a, quantum=int(quantum)) for a in ("fcfs", "sjf", "priority", "rr")}
+        active_res = cpu_results[alg]
+
+        stat_row(
+            [
+                ("Avg Waiting", f"{active_res['avg_waiting']:.2f}", "time units"),
+                ("Avg Turnaround", f"{active_res['avg_turnaround']:.2f}", "time units"),
+                ("Avg Response", f"{active_res['avg_response']:.2f}", "time units"),
+                ("CPU Utilization", f"{active_res['cpu_utilization']:.1f}%", f"makespan {active_res['makespan']}"),
+                ("Throughput", f"{active_res['throughput']:.3f}", "proc / unit"),
