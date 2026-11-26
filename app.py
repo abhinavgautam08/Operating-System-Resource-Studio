@@ -145,3 +145,12 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
   text-transform:uppercase; color:var(--faint);
 }
 [data-baseweb="select"] > div, [data-testid="stNumberInput"] input,
+[data-testid="stTextInput"] input, [data-testid="stTextArea"] textarea{
+  border-radius:2px !important; border-color:var(--rule-strong) !important; background:var(--surface) !important;
+  font-family:'IBM Plex Mono',monospace !important; font-size:.82rem !important;
+}
+[data-baseweb="select"] > div:focus-within, [data-testid="stNumberInput"] input:focus,
+[data-testid="stTextInput"] input:focus, [data-testid="stTextArea"] textarea:focus{
+  border-color:var(--accent) !important; box-shadow:0 0 0 1px var(--accent) !important;
+}
+
