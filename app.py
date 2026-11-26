@@ -1368,3 +1368,11 @@ def render_deadlock_page(ds: dict) -> None:
             seq_str = " → ".join(f"P{i}" for i in dl_res["sequence"])
             st.markdown(f'<div class="callout ok"><strong>SYSTEM SAFE</strong> — Completion sequence: {seq_str}</div>', unsafe_allow_html=True)
         else:
+            unfin = ", ".join(f"P{i}" for i in dl_res["unfinished"])
+            st.markdown(f'<div class="callout bad"><strong>SYSTEM UNSAFE</strong> — No safe completion order; unfinished processes: {unfin}</div>', unsafe_allow_html=True)
+
+        t_need, t_trace, t_req = st.tabs(["Need Matrix", "Safety Execution Trace", "Test Resource Request"])
+        with t_need:
+            st.dataframe(pd.DataFrame(dl_res["need"], columns=res_cols, index=proc_idx), width="stretch")
+        with t_trace:
+            if dl_res["trace"]:
