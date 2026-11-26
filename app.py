@@ -1567,3 +1567,12 @@ def render_export_page(ds: dict) -> None:
             (d1, "analysis.json", json.dumps(all_res, indent=2), "application/json"),
             (d2, "scheduling.csv", sched_df.to_csv(index=False), "text/csv"),
             (d3, "memory.csv", mem_df.to_csv(index=False), "text/csv"),
+            (d4, "disk.csv", disk_df.to_csv(index=False), "text/csv"),
+        ]
+        for col, fname, payload, mime in downloads:
+            with col:
+                st.download_button(fname, data=payload, file_name=fname, mime=mime, width="stretch")
+    except Exception as exc:
+        st.error(f"Export unavailable: {exc}")
+
+
