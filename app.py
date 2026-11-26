@@ -85,3 +85,11 @@ html, body, .stApp{background:var(--paper); color:var(--ink);}
 .top-title{
   font-family:'Source Serif 4',Georgia,serif; font-size:1.45rem; font-weight:600;
   color:var(--ink); letter-spacing:-.01em;
+}
+.top-sub{
+  font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--faint);
+}
+
+h1,h2,h3,h4{font-family:'Source Serif 4',Georgia,serif !important; color:var(--ink) !important; font-weight:600 !important;}
+h1{font-size:2.1rem; letter-spacing:-.01em; margin:.15rem 0 .35rem !important;}
