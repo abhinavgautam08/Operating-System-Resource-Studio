@@ -900,3 +900,11 @@ def make_memory_map(mem_result: dict) -> go.Figure:
 
     fig.add_trace(
         go.Bar(
+            y=block_labels,
+            x=final_free,
+            orientation="h",
+            name="Free",
+            showlegend=True,
+            marker_color=FREE_FILL,
+            marker_line_color=RULE,
+            marker_line_width=1,
