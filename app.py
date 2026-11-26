@@ -691,3 +691,12 @@ def disk_schedule(
         "algorithm": alg,
         "head": head,
         "direction": dir_norm,
+        "order": order,
+        "path": path,
+        "step_distances": step_distances,
+        "total_movement": total,
+        "average_movement": total / len(requests),
+        "disk_size": disk_size,
+    }
+
+
