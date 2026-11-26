@@ -978,3 +978,11 @@ def make_disk_head_chart(disk_result: dict) -> go.Figure:
             linecolor=IDLE,
             tickfont=dict(family=MONO, size=10, color=FAINT),
         ),
+        yaxis=dict(
+            title="step",
+            autorange="reversed",
+            dtick=1,
+            gridcolor=GRID,
+            linecolor=IDLE,
+            tickfont=dict(family=MONO, size=10, color=FAINT),
+        ),
