@@ -848,3 +848,11 @@ def make_cpu_comparison_chart(cpu_results: dict[str, dict]) -> go.Figure:
                 text=[f"{v:.2f}" for v in vals],
                 textposition="outside",
                 textfont=dict(family=MONO, size=10, color=MUTED),
+            )
+        )
+    style_fig(fig, title="Scheduling Policy Comparison (time units)", height=330)
+    fig.update_layout(barmode="group", yaxis_title="time (units)")
+    return fig
+
+
+def make_memory_map(mem_result: dict) -> go.Figure:
