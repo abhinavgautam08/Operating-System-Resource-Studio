@@ -1151,3 +1151,12 @@ def render_overview_page(ds: dict) -> None:
         ex1, ex2 = st.columns([3, 1])
         with ex1:
             st.markdown(
+                '<div class="panel"><p>Export the complete computed analysis across all four subsystems as a structured JSON report, or switch to any module tab above to edit parameters interactively.</p></div>',
+                unsafe_allow_html=True,
+            )
+        with ex2:
+            st.download_button(
+                "Download analysis.json",
+                data=json.dumps(all_res, indent=2),
+                file_name="analysis.json",
+                mime="application/json",
