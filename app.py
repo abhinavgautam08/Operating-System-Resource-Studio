@@ -1047,3 +1047,12 @@ def stat_row(items: list[tuple[str, str, str] | tuple[str, str, str, str]]) -> N
 
 def _init_session_state() -> None:
     defaults = {
+        "dataset": get_preset("Lab Standard (Default)"),
+        "preset_name": "Lab Standard (Default)",
+        "page": "Overview",
+        "cpu_alg": "fcfs",
+        "mem_strat": "first_fit",
+        "disk_alg": "sstf",
+    }
+    for key, value in defaults.items():
+        if key not in st.session_state:
