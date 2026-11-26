@@ -1593,3 +1593,12 @@ def render_app() -> None:
         initial_sidebar_state="expanded",
     )
     st.markdown(CSS, unsafe_allow_html=True)
+
+    _init_session_state()
+    _render_navigation()
+
+    page = st.session_state.page
+    renderer = PAGE_RENDERERS.get(page, render_export_page)
+    renderer(st.session_state.dataset)
+
+    st.markdown(
