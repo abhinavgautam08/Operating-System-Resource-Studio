@@ -1298,3 +1298,12 @@ def render_memory_page(ds: dict) -> None:
 
         mem_results = {s: mem_allocate(blocks, mem_reqs, s) for s in strategies}
         active_mem = mem_results[strat]
+
+        stat_row(
+            [
+                ("Requests Allocated", f"{active_mem['allocated_count']}/{len(active_mem['allocations'])}", "fulfilled requests"),
+                ("Memory Utilization", f"{active_mem['utilization_pct']:.1f}%", f"{active_mem['total_allocated']} / {active_mem['total_capacity']} units"),
+                ("Remaining Free", f"{active_mem['total_free']}", "unallocated capacity"),
+                ("Unallocated", str(active_mem["unallocated_count"]), "rejected requests", "bad" if active_mem["unallocated_count"] > 0 else "ok"),
+            ]
+        )
