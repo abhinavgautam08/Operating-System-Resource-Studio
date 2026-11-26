@@ -1264,3 +1264,11 @@ def render_cpu_page(ds: dict) -> None:
         ]
         st.dataframe(pd.DataFrame(summary_rows), width="stretch", hide_index=True)
         st.plotly_chart(make_cpu_comparison_chart(cpu_results), width="stretch", config={"displaylogo": False})
+    except Exception as exc:
+        st.error(f"CPU Scheduling error: {exc}")
+
+
+def render_memory_page(ds: dict) -> None:
+    header(
+        "Subsystem 02 · Memory",
+        "Contiguous Memory Allocation",
