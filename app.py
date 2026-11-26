@@ -1688,3 +1688,12 @@ class TestChartsAndPresets(unittest.TestCase):
             self.assertIsNotNone(make_gantt(cpu_res["fcfs"]["segments"]))
             self.assertIsNotNone(make_cpu_comparison_chart(cpu_res))
             self.assertIsNotNone(make_memory_map(mem_res["best_fit"]))
+            self.assertIsNotNone(make_memory_comparison_chart(mem_res))
+            self.assertIsNotNone(make_disk_head_chart(disk_res["sstf"]))
+            self.assertIsNotNone(make_disk_comparison_chart(disk_res))
+
+
+if _RUN_TESTS_ON_MAIN:
+    unittest.main(verbosity=2)
+elif get_script_run_ctx() is not None:
+    render_app()
