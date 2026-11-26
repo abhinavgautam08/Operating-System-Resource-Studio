@@ -1498,3 +1498,11 @@ def _build_export_tables(all_res: dict) -> tuple[pd.DataFrame, pd.DataFrame, pd.
             {
                 "strategy": s,
                 "allocated_count": r["allocated_count"],
+                "total_requests": len(r["allocations"]),
+                "utilization_pct": round(r["utilization_pct"], 2),
+                "total_free": r["total_free"],
+            }
+            for s, r in all_res["memory"].items()
+        ]
+    )
+    disk_df = pd.DataFrame(
