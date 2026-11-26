@@ -761,3 +761,11 @@ def style_fig(fig: go.Figure, title: str = "", height: int = 320) -> go.Figure:
             linecolor=IDLE,
             linewidth=1,
             zeroline=False,
+            tickfont=dict(family=MONO, size=10, color=FAINT),
+        ),
+    )
+    return fig
+
+
+def make_gantt(segments: list[dict]) -> go.Figure:
+    pids = sorted(
