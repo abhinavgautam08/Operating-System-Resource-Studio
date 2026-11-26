@@ -1437,3 +1437,12 @@ def render_disk_page(ds: dict) -> None:
             format_func=str.upper,
         )
         st.session_state.disk_alg = disk_alg
+
+    try:
+        disk_reqs = parse_int_list(disk_reqs_text)
+        dsk["requests"] = disk_reqs
+        dsk["head"] = int(head_pos)
+        dsk["disk_size"] = int(disk_size)
+        dsk["direction"] = direction
+
+        disk_results = {a: disk_schedule(disk_reqs, int(head_pos), a, int(disk_size), direction) for a in algs}
