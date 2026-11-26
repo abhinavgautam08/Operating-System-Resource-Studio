@@ -856,3 +856,12 @@ def make_cpu_comparison_chart(cpu_results: dict[str, dict]) -> go.Figure:
 
 
 def make_memory_map(mem_result: dict) -> go.Figure:
+    blocks = mem_result["initial_blocks"]
+    contents = mem_result["block_contents"]
+    final_free = mem_result["final_free"]
+    block_labels = [f"Block {i + 1} ({b})" for i, b in enumerate(blocks)]
+
+    fig = go.Figure()
+    max_parts = max((len(c) for c in contents), default=0)
+
+    for part_idx in range(max_parts):
