@@ -293,3 +293,11 @@ def parse_int_list(text: str) -> list[int]:
 
 
 @dataclass(frozen=True)
+class Process:
+    pid: str
+    arrival: int
+    burst: int
+    priority: int = 0
+
+    def __post_init__(self) -> None:
+        if not str(self.pid).strip():
