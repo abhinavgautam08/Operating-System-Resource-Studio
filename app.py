@@ -1029,7 +1029,7 @@ PAGES = [
 def header(kicker: str, title: str, subtitle: str = "") -> None:
     st.markdown(
         f'<div class="page-head"><div class="kicker">{kicker}</div>'
-        f'<h1>{title}</h1><p class="lede">{subtitle}</p></div>',
+        f'<p class="lede">{subtitle}</p></div>',
         unsafe_allow_html=True,
     )
 
@@ -1079,7 +1079,7 @@ def _render_navigation() -> None:
     current_title = PAGE_TITLES.get(st.session_state.page, "OS Resource Studio")
     st.markdown(
         '<div class="top-nav">'
-        f'<div class="top-title">{current_title}</div>'
+        f'<div class="top-title" style="font-size:1.75rem;">{current_title}</div>'
         '<div class="top-sub" style="text-align:right; color:var(--muted);">'
         'Name: Abhinav Adarsh &nbsp;·&nbsp; Roll No: 2401010298 &nbsp;·&nbsp; Section E'
         '</div>'
