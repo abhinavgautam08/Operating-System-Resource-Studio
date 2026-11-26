@@ -1125,3 +1125,12 @@ def render_overview_page(ds: dict) -> None:
         dl_note = f"seq {dl_res['sequence']}" if dl_res["safe"] else f"unfinished {dl_res['unfinished']}"
         dl_tone = "ok" if dl_res["safe"] else "bad"
 
+        stat_row(
+            [
+                ("Lowest CPU Wait", f"{best_cpu['avg_waiting']:.2f}", f"{best_cpu_name.upper()} · {best_cpu['cpu_utilization']:.1f}% util"),
+                ("Best Memory Fit", f"{best_mem['allocated_count']}/{len(best_mem['allocations'])}", f"{best_mem_name.replace('_', ' ')} · {best_mem['utilization_pct']:.1f}%"),
+                ("Banker's State", dl_state, dl_note, dl_tone),
+                ("Lowest Disk Seek", f"{best_disk['total_movement']}", f"{best_disk_name.upper()} · {best_disk['average_movement']:.1f} avg"),
+            ]
+        )
+
