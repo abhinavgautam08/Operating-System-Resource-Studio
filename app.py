@@ -1420,3 +1420,11 @@ def render_disk_page(ds: dict) -> None:
 
     dsk = ds["disk"]
     algs = ["fcfs", "sstf", "scan"]
+    c1, c2, c3, c4, c5 = st.columns([2.4, 1, 1, 1, 1.2])
+    with c1:
+        disk_reqs_text = st.text_input("Track Requests (comma-separated)", value=", ".join(map(str, dsk["requests"])))
+    with c2:
+        head_pos = st.number_input("Initial Head", min_value=0, value=int(dsk["head"]), step=1)
+    with c3:
+        disk_size = st.number_input("Disk Size", min_value=1, value=int(dsk.get("disk_size", 200)), step=1)
+    with c4:
