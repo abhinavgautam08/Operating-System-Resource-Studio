@@ -336,3 +336,12 @@ def _cpu_metrics(
         response = first_start - p.arrival
 
         rows.append(
+            {
+                "pid": p.pid,
+                "arrival": p.arrival,
+                "burst": p.burst,
+                "priority": p.priority,
+                "completion": finish_time,
+                "turnaround": turnaround,
+                "waiting": waiting,
+                "response": response,
