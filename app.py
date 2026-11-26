@@ -865,3 +865,12 @@ def make_memory_map(mem_result: dict) -> go.Figure:
     max_parts = max((len(c) for c in contents), default=0)
 
     for part_idx in range(max_parts):
+        sizes = []
+        labels = []
+        hovers = []
+        for b_idx in range(len(blocks)):
+            if part_idx < len(contents[b_idx]):
+                item = contents[b_idx][part_idx]
+                sizes.append(item["size"])
+                labels.append(f"{item['request']} ({item['size']})")
+                hovers.append(f"<b>{item['request']}</b><br>Block {b_idx + 1}<br>Size: {item['size']}")
