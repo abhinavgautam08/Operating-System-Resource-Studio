@@ -345,3 +345,11 @@ def _cpu_metrics(
                 "turnaround": turnaround,
                 "waiting": waiting,
                 "response": response,
+            }
+        )
+
+    makespan = max(completion.values()) if completion else 0
+    total_burst = sum(p.burst for p in processes)
+    cpu_utilization = (total_burst / makespan * 100.0) if makespan > 0 else 0.0
+    throughput = (len(processes) / makespan) if makespan > 0 else 0.0
+
