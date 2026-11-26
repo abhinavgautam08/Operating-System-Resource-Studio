@@ -1160,3 +1160,11 @@ def render_overview_page(ds: dict) -> None:
                 data=json.dumps(all_res, indent=2),
                 file_name="analysis.json",
                 mime="application/json",
+                width="stretch",
+            )
+    except Exception as exc:
+        st.error(f"Simulation error: {exc}")
+
+
+def _clean_process_rows(edited_df: pd.DataFrame) -> list[dict]:
+    clean = []
