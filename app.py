@@ -587,3 +587,12 @@ def request_resources(
     request: list[int],
 ) -> dict:
     if not 0 <= process < len(allocation):
+        raise ValueError("Process index out of range.")
+    if len(request) != len(available) or any(x < 0 for x in request):
+        raise ValueError("Invalid request vector.")
+
+    need = [maximum[process][j] - allocation[process][j] for j in range(len(available))]
+    if any(request[j] > need[j] for j in range(len(request))):
+        return {"granted": False, "reason": "Request exceeds declared remaining need."}
+    if any(request[j] > available[j] for j in range(len(request))):
+        return {"granted": False, "reason": "Requested resources exceed currently available units."}
