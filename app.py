@@ -1489,3 +1489,12 @@ def _build_export_tables(all_res: dict) -> tuple[pd.DataFrame, pd.DataFrame, pd.
                 "avg_response": round(r["avg_response"], 4),
                 "makespan": r["makespan"],
                 "cpu_utilization": round(r["cpu_utilization"], 2),
+            }
+            for a, r in all_res["scheduling"].items()
+        ]
+    )
+    mem_df = pd.DataFrame(
+        [
+            {
+                "strategy": s,
+                "allocated_count": r["allocated_count"],
