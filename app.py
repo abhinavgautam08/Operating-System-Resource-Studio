@@ -275,3 +275,12 @@ PRESETS: dict[str, dict] = {
             "requests": [190, 10, 175, 25, 160, 40, 145],
             "head": 100,
             "disk_size": 200,
+            "direction": "right",
+        },
+    },
+}
+
+
+def get_preset(name: str) -> dict:
+    return deepcopy(PRESETS[name])
+
