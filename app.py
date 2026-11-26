@@ -1350,3 +1350,12 @@ def render_deadlock_page(ds: dict) -> None:
     with alloc_col:
         st.markdown('<div class="note">Allocation Matrix</div>', unsafe_allow_html=True)
         edited_alloc = st.data_editor(pd.DataFrame(dl["allocation"], columns=res_cols, index=proc_idx), width="stretch", key="alloc_editor")
+    with max_col:
+        st.markdown('<div class="note">Maximum Matrix</div>', unsafe_allow_html=True)
+        edited_max = st.data_editor(pd.DataFrame(dl["maximum"], columns=res_cols, index=proc_idx), width="stretch", key="max_editor")
+
+    try:
+        available = parse_int_list(avail_text)
+        allocation = edited_alloc.astype(int).values.tolist()
+        maximum = edited_max.astype(int).values.tolist()
+        dl["available"] = available
