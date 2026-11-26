@@ -258,3 +258,12 @@ PRESETS: dict[str, dict] = {
         },
         "deadlock": {
             "available": [1, 0, 0],
+            "allocation": [
+                [1, 1, 0],
+                [2, 1, 1],
+                [1, 0, 2],
+                [0, 2, 1],
+            ],
+            "maximum": [
+                [4, 2, 2],
+                [3, 3, 2],
