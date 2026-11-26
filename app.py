@@ -1255,3 +1255,12 @@ def render_cpu_page(ds: dict) -> None:
                 "Algorithm": a.upper(),
                 "Avg Waiting": round(r["avg_waiting"], 2),
                 "Avg Turnaround": round(r["avg_turnaround"], 2),
+                "Avg Response": round(r["avg_response"], 2),
+                "CPU Util (%)": round(r["cpu_utilization"], 1),
+                "Makespan": r["makespan"],
+                "Context Switches": r["context_switches"],
+            }
+            for a, r in cpu_results.items()
+        ]
+        st.dataframe(pd.DataFrame(summary_rows), width="stretch", hide_index=True)
+        st.plotly_chart(make_cpu_comparison_chart(cpu_results), width="stretch", config={"displaylogo": False})
