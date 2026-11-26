@@ -1108,3 +1108,11 @@ def render_overview_page(ds: dict) -> None:
     with ctrl_r:
         st.write("")
         st.write("")
+        preview_alg = st.selectbox("Hero Gantt Policy", ["fcfs", "sjf", "priority", "rr"], format_func=str.upper)
+
+    try:
+        all_res = compute_all_subsystems(ds)
+        cpu_res = all_res["scheduling"]
+        mem_res = all_res["memory"]
+        dl_res = all_res["deadlock"]
+        disk_res = all_res["disk"]
