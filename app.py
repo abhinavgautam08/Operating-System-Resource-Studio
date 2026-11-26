@@ -93,3 +93,12 @@ html, body, .stApp{background:var(--paper); color:var(--ink);}
 
 h1,h2,h3,h4{font-family:'Source Serif 4',Georgia,serif !important; color:var(--ink) !important; font-weight:600 !important;}
 h1{font-size:2.1rem; letter-spacing:-.01em; margin:.15rem 0 .35rem !important;}
+h2{font-size:1.32rem; border-bottom:1px solid var(--rule); padding-bottom:.35rem; margin-top:2rem !important;}
+h3{font-size:1.05rem; margin-top:1.3rem !important;}
+p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
+
+.page-head{border-bottom:1px solid var(--rule); padding-bottom:1rem; margin-bottom:1.5rem;}
+.kicker{font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:.35rem;}
+.lede{color:var(--muted); font-size:.95rem; margin:.1rem 0 0; max-width:74ch;}
+
