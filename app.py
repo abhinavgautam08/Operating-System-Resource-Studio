@@ -319,3 +319,11 @@ def _build_segments_with_idle(timeline: list[tuple[int, int, str]]) -> list[dict
         current_time = end
 
     return segments
+
+
+def _cpu_metrics(
+    processes: list[Process],
+    completion: dict[str, int],
+    timeline: list[tuple[int, int, str]],
+    algorithm: str,
+) -> dict:
