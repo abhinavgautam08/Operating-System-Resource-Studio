@@ -102,3 +102,12 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
   text-transform:uppercase; color:var(--accent); margin-bottom:.35rem;}
 .lede{color:var(--muted); font-size:.95rem; margin:.1rem 0 0; max-width:74ch;}
 
+.stat{border-top:2px solid var(--ink); padding:.65rem 0 0;}
+.stat-label{font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--faint);}
+.stat-value{font-family:'Source Serif 4',Georgia,serif; font-size:1.7rem; font-weight:600;
+  color:var(--ink); line-height:1.2; margin:.2rem 0 .1rem; font-variant-numeric:tabular-nums;}
+.stat-value.ok{color:var(--ok);}
+.stat-value.bad{color:var(--bad);}
+.stat-note{font-family:'IBM Plex Mono',monospace; font-size:.66rem; color:var(--faint);}
+
