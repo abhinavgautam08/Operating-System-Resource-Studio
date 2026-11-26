@@ -787,3 +787,11 @@ def make_gantt(segments: list[dict]) -> go.Figure:
                 orientation="h",
                 name=seg["pid"],
                 marker_color=colors[seg["pid"]],
+                marker_line_color=SURFACE,
+                marker_line_width=1,
+                showlegend=False,
+                text=[seg["pid"]],
+                textposition="inside",
+                insidetextanchor="middle",
+                textfont=dict(family=MONO, size=10, color="#FFFFFF"),
+                hovertemplate=(
