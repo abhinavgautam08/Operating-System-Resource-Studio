@@ -1662,3 +1662,12 @@ class TestDeadlock(unittest.TestCase):
 
     def test_unsafe_preset(self) -> None:
         ds = get_preset("Unsafe Deadlock & Fragmentation")["deadlock"]
+        res = banker_safety(ds["available"], ds["allocation"], ds["maximum"])
+        self.assertFalse(res["safe"])
+        self.assertTrue(len(res["unfinished"]) > 0)
+
+
+class TestDisk(unittest.TestCase):
+    def test_sample_disk(self) -> None:
+        ds = get_preset("Lab Standard (Default)")["disk"]
+        fcfs = disk_schedule(ds["requests"], ds["head"], "fcfs", ds["disk_size"], ds["direction"])
