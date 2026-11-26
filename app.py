@@ -483,3 +483,12 @@ def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_
     if strat not in ("first_fit", "best_fit", "worst_fit"):
         raise ValueError(f"Unknown allocation strategy: {strategy}")
 
+    free = list(blocks)
+    block_contents: list[list[dict]] = [[] for _ in blocks]
+    rows: list[dict] = []
+
+    for idx, size in enumerate(requests, 1):
+        chosen = _choose_memory_block(free, size, strat)
+        if chosen is not None:
+            free[chosen] -= size
+            block_contents[chosen].append({"request": f"R{idx}", "size": size})
