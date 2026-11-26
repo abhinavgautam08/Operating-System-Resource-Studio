@@ -492,3 +492,12 @@ def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_
         if chosen is not None:
             free[chosen] -= size
             block_contents[chosen].append({"request": f"R{idx}", "size": size})
+
+        rows.append(
+            {
+                "request": idx,
+                "label": f"R{idx}",
+                "size": size,
+                "block": chosen + 1 if chosen is not None else None,
+                "remaining_in_block": free[chosen] if chosen is not None else None,
+                "allocated": chosen is not None,
