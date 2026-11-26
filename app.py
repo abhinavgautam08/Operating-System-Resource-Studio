@@ -1333,3 +1333,12 @@ def render_memory_page(ds: dict) -> None:
         st.error(f"Memory Allocation error: {exc}")
 
 
+def render_deadlock_page(ds: dict) -> None:
+    header(
+        "Subsystem 03 · Deadlock Avoidance",
+        "Banker's Safety Algorithm",
+        "Inspect the system's safe completion sequence, examine how the Work vector evolves step by step, and test hypothetical resource requests.",
+    )
+
+    dl = ds["deadlock"]
+    res_cols = [f"R{j}" for j in range(len(dl["available"]))]
