@@ -891,3 +891,12 @@ def make_memory_map(mem_result: dict) -> go.Figure:
                 marker_line_width=1,
                 text=labels,
                 textposition="inside",
+                insidetextanchor="middle",
+                textfont=dict(family=MONO, size=10, color="#FFFFFF"),
+                hovertext=hovers,
+                hoverinfo="text",
+            )
+        )
+
+    fig.add_trace(
+        go.Bar(
