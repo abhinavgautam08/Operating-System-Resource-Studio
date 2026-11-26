@@ -397,3 +397,11 @@ def _run_non_preemptive(processes: list[Process], alg: str) -> tuple[dict[str, i
         start = now
         now += chosen.burst
         timeline.append((start, now, chosen.pid))
+        completion[chosen.pid] = now
+        pending.remove(chosen)
+
+    return completion, timeline
+
+
+def _run_round_robin(processes: list[Process], quantum: int) -> tuple[dict[str, int], list[tuple[int, int, str]]]:
+    original_order = {p.pid: idx for idx, p in enumerate(processes)}
