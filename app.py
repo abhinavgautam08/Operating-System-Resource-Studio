@@ -622,3 +622,12 @@ def _disk_order_sstf(requests: list[int], head: int) -> list[int]:
     while remaining:
         best_idx, best_track = min(remaining, key=lambda pair: (abs(pair[1] - current), pair[0]))
         order.append(best_track)
+        current = best_track
+        remaining.remove((best_idx, best_track))
+
+    return order
+
+
+def _disk_order_scan(requests: list[int], head: int, disk_size: int, direction: str) -> list[int]:
+    left = sorted((x for x in requests if x < head), reverse=True)
+    right = sorted(x for x in requests if x >= head)
