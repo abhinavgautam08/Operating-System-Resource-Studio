@@ -986,3 +986,12 @@ def make_disk_head_chart(disk_result: dict) -> go.Figure:
             linecolor=IDLE,
             tickfont=dict(family=MONO, size=10, color=FAINT),
         ),
+    )
+    return fig
+
+
+def make_disk_comparison_chart(disk_results: dict[str, dict]) -> go.Figure:
+    algs = [a.upper() for a in disk_results.keys()]
+    totals = [disk_results[a.lower()]["total_movement"] for a in algs]
+
+    fig = go.Figure(
