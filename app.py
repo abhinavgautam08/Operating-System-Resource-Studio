@@ -639,3 +639,12 @@ def _disk_order_scan(requests: list[int], head: int, disk_size: int, direction: 
 
     if right:
         return left + [0] + right
+    return left
+
+
+def disk_schedule(
+    requests: list[int],
+    head: int,
+    algorithm: str = "fcfs",
+    disk_size: int = 200,
+    direction: str = "right",
