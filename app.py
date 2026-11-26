@@ -137,3 +137,11 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
 .stButton > button[kind="secondary"]:hover, .stDownloadButton > button:hover{
   border-color:var(--accent); background:var(--wash);
 }
+.stButton > button[kind="secondary"]:hover p, .stDownloadButton > button:hover p{color:var(--accent) !important;}
+
+[data-testid="stSelectbox"] label, [data-testid="stNumberInput"] label,
+[data-testid="stTextInput"] label, [data-testid="stTextArea"] label{
+  font-family:'IBM Plex Mono',monospace; font-size:.66rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--faint);
+}
+[data-baseweb="select"] > div, [data-testid="stNumberInput"] input,
