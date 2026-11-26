@@ -1324,3 +1324,12 @@ def render_memory_page(ds: dict) -> None:
                     "Utilization (%)": round(r["utilization_pct"], 1),
                     "Remaining Free": r["total_free"],
                     "Final Free Vector": str(r["final_free"]),
+                }
+                for s, r in mem_results.items()
+            ]
+            st.dataframe(pd.DataFrame(cmp_rows), width="stretch", hide_index=True)
+            st.plotly_chart(make_memory_comparison_chart(mem_results), width="stretch", config={"displaylogo": False})
+    except Exception as exc:
+        st.error(f"Memory Allocation error: {exc}")
+
+
