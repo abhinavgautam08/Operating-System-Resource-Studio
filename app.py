@@ -1134,3 +1134,11 @@ def render_overview_page(ds: dict) -> None:
             ]
         )
 
+        st.markdown(f"### Execution Trace — {preview_alg.upper()}")
+        st.plotly_chart(
+            make_gantt(cpu_res[preview_alg]["segments"]),
+            width="stretch",
+            config={"displaylogo": False, "scrollZoom": True},
+        )
+
+        c_left, c_right = st.columns(2)
