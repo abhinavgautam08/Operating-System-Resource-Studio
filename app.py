@@ -327,3 +327,12 @@ def _cpu_metrics(
     timeline: list[tuple[int, int, str]],
     algorithm: str,
 ) -> dict:
+    rows = []
+    for p in processes:
+        finish_time = completion[p.pid]
+        turnaround = finish_time - p.arrival
+        waiting = turnaround - p.burst
+        first_start = next(start for start, _, pid in timeline if pid == p.pid)
+        response = first_start - p.arrival
+
+        rows.append(
