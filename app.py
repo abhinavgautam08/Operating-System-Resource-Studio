@@ -561,3 +561,12 @@ def banker_safety(available: list[int], allocation: list[list[int]], maximum: li
                         "process": f"P{i}",
                         "need": list(need[i]),
                         "work_before": work_before,
+                        "allocation": list(allocation[i]),
+                        "work_after": list(work),
+                    }
+                )
+                progressed = True
+        if not progressed:
+            break
+
+    is_safe = all(finish)
