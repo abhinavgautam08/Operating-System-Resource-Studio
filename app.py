@@ -1619,3 +1619,12 @@ class TestScheduler(unittest.TestCase):
         rr = cpu_schedule(self.procs, "rr", quantum=2)
 
         self.assertAlmostEqual(fcfs["avg_waiting"], 4.75)
+        self.assertAlmostEqual(sjf["avg_waiting"], 4.00)
+        self.assertAlmostEqual(prio["avg_waiting"], 5.50)
+        self.assertAlmostEqual(rr["avg_waiting"], 5.00)
+        self.assertAlmostEqual(rr["avg_response"], 1.50)
+
+    def test_idle_gap_segments(self) -> None:
+        procs = [Process("P1", 2, 3, 1), Process("P2", 8, 2, 1)]
+        res = cpu_schedule(procs, "fcfs")
+        pids = [s["pid"] for s in res["segments"]]
