@@ -804,3 +804,12 @@ def make_gantt(segments: list[dict]) -> go.Figure:
             )
         )
 
+    end = max((s["end"] for s in segments), default=1)
+    fig.update_layout(
+        barmode="overlay",
+        height=195,
+        margin=dict(l=18, r=18, t=16, b=40),
+        paper_bgcolor=SURFACE,
+        plot_bgcolor=SURFACE,
+        font=dict(family=MONO, size=11, color=MUTED),
+        hoverlabel=dict(bgcolor=SURFACE, bordercolor=RULE, font=dict(family=MONO, size=11, color=INK)),
