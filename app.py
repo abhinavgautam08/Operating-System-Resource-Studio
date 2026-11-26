@@ -1099,3 +1099,12 @@ def render_overview_page(ds: dict) -> None:
     with ctrl_l:
         preset_names = list(PRESETS.keys())
         current_name = st.session_state.preset_name
+        idx = preset_names.index(current_name) if current_name in PRESETS else 0
+        preset_choice = st.selectbox("Workload Preset", preset_names, index=idx)
+        if preset_choice != current_name:
+            st.session_state.preset_name = preset_choice
+            st.session_state.dataset = get_preset(preset_choice)
+            st.rerun()
+    with ctrl_r:
+        st.write("")
+        st.write("")
