@@ -119,3 +119,12 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
   border-radius:2px; padding:.85rem 1.1rem; margin:.75rem 0 1.1rem;
   font-family:'IBM Plex Mono',monospace; font-size:.8rem; color:var(--ink);}
 .callout.ok{border-left-color:var(--ok);}
+.callout.bad{border-left-color:var(--bad);}
+.callout.warn{border-left-color:var(--warn);}
+
+.stButton > button, .stDownloadButton > button{
+  border-radius:2px; font-family:'IBM Plex Mono',monospace;
+  font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; min-height:38px;
+  transition:background-color .12s ease, border-color .12s ease;
+}
+.stButton > button[kind="primary"]{background:var(--accent); border:1px solid var(--accent);}
