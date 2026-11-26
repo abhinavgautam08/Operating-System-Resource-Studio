@@ -405,3 +405,12 @@ def _run_non_preemptive(processes: list[Process], alg: str) -> tuple[dict[str, i
 
 def _run_round_robin(processes: list[Process], quantum: int) -> tuple[dict[str, int], list[tuple[int, int, str]]]:
     original_order = {p.pid: idx for idx, p in enumerate(processes)}
+    arrivals = sorted(processes, key=lambda p: (p.arrival, original_order[p.pid]))
+    remaining = {p.pid: p.burst for p in processes}
+    ready: deque[Process] = deque()
+
+    now = 0
+    index = 0
+    completion: dict[str, int] = {}
+    timeline: list[tuple[int, int, str]] = []
+
