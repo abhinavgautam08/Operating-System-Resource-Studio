@@ -926,3 +926,11 @@ def make_memory_map(mem_result: dict) -> go.Figure:
 
 
 def make_memory_comparison_chart(mem_results: dict[str, dict]) -> go.Figure:
+    strats = list(mem_results.keys())
+    labels = [s.replace("_", " ").title() for s in strats]
+    utils = [round(mem_results[s]["utilization_pct"], 1) for s in strats]
+
+    fig = go.Figure(
+        go.Bar(
+            x=labels,
+            y=utils,
