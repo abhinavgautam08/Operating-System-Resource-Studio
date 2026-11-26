@@ -59,3 +59,11 @@ CSS = """
   --faint:#8A8A8A; --rule:#DAD5C9; --rule-strong:#B9B2A3;
   --accent:#1F4E79; --accent-dark:#173B5C; --wash:#EAF0F6;
   --ok:#3F6B4F; --warn:#8C5A1B; --bad:#8C2F1B;
+}
+
+html, body, .stApp{background:var(--paper); color:var(--ink);}
+.stApp{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+[data-testid="stHeader"]{background:transparent;}
+[data-testid="stToolbar"]{display:none;}
+[data-testid="stDecoration"]{display:none;}
+#MainMenu{visibility:hidden;}
