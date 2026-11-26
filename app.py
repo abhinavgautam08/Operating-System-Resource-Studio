@@ -41,3 +41,12 @@ PALETTE = [
 ]
 INK = "#1A1A1A"
 MUTED = "#5F5F5F"
+FAINT = "#8A8A8A"
+RULE = "#DAD5C9"
+GRID = "#E7E2D8"
+IDLE = "#B9B2A3"
+FREE_FILL = "#EFECE4"
+SURFACE = "#FFFFFF"
+SERIF = "Source Serif 4, Georgia, serif"
+MONO = "IBM Plex Mono, SFMono-Regular, Consolas, monospace"
+
