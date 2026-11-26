@@ -301,3 +301,12 @@ class Process:
 
     def __post_init__(self) -> None:
         if not str(self.pid).strip():
+            raise ValueError("Process ID cannot be empty.")
+        if self.arrival < 0:
+            raise ValueError(f"Arrival time for {self.pid} must be non-negative.")
+        if self.burst <= 0:
+            raise ValueError(f"Burst time for {self.pid} must be positive.")
+
+
+def _build_segments_with_idle(timeline: list[tuple[int, int, str]]) -> list[dict]:
+    segments = []
