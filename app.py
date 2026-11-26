@@ -1446,3 +1446,11 @@ def render_disk_page(ds: dict) -> None:
         dsk["direction"] = direction
 
         disk_results = {a: disk_schedule(disk_reqs, int(head_pos), a, int(disk_size), direction) for a in algs}
+        active_disk = disk_results[disk_alg]
+        best_alg, best_disk = min(disk_results.items(), key=lambda kv: kv[1]["total_movement"])
+
+        stat_row(
+            [
+                ("Active Policy", disk_alg.upper(), f"direction: {direction}"),
+                ("Total Head Movement", f"{active_disk['total_movement']}", "tracks traversed"),
+                ("Average Seek", f"{active_disk['average_movement']:.2f}", "tracks / request"),
