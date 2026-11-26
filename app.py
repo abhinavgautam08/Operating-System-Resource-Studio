@@ -171,3 +171,12 @@ hr{border:none; border-top:1px solid var(--rule); margin:1.6rem 0;}
 """
 
 PRESETS: dict[str, dict] = {
+    "Lab Standard (Default)": {
+        "quantum": 2,
+        "processes": [
+            {"pid": "P1", "arrival": 0, "burst": 7, "priority": 2},
+            {"pid": "P2", "arrival": 2, "burst": 4, "priority": 1},
+            {"pid": "P3", "arrival": 4, "burst": 1, "priority": 3},
+            {"pid": "P4", "arrival": 5, "burst": 4, "priority": 2},
+        ],
+        "memory": {
