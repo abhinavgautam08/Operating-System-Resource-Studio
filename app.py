@@ -1610,3 +1610,12 @@ def render_app() -> None:
 class TestScheduler(unittest.TestCase):
     def setUp(self) -> None:
         ds = get_preset("Lab Standard (Default)")
+        self.procs = [Process(**p) for p in ds["processes"]]
+
+    def test_sample_metrics(self) -> None:
+        fcfs = cpu_schedule(self.procs, "fcfs")
+        sjf = cpu_schedule(self.procs, "sjf")
+        prio = cpu_schedule(self.procs, "priority")
+        rr = cpu_schedule(self.procs, "rr", quantum=2)
+
+        self.assertAlmostEqual(fcfs["avg_waiting"], 4.75)
