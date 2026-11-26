@@ -1021,3 +1021,12 @@ PAGES = [
 
 
 def header(kicker: str, title: str, subtitle: str = "") -> None:
+    st.markdown(
+        f'<div class="page-head"><div class="kicker">{kicker}</div>'
+        f'<h1>{title}</h1><p class="lede">{subtitle}</p></div>',
+        unsafe_allow_html=True,
+    )
+
+
+def stat(label: str, value: str, note: str = "", tone: str = "") -> None:
+    tone_cls = f" {tone}" if tone else ""
