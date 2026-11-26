@@ -917,3 +917,12 @@ def make_memory_map(mem_result: dict) -> go.Figure:
     )
 
     style_fig(fig, title="Contiguous Block Partition Map", height=max(240, 48 * len(blocks) + 90))
+    fig.update_layout(
+        barmode="stack",
+        xaxis_title="memory units",
+        yaxis=dict(autorange="reversed", gridcolor=GRID, linecolor=IDLE, tickfont=dict(family=MONO, size=10, color=INK)),
+    )
+    return fig
+
+
+def make_memory_comparison_chart(mem_results: dict[str, dict]) -> go.Figure:
