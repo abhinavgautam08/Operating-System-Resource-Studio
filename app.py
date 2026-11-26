@@ -934,3 +934,12 @@ def make_memory_comparison_chart(mem_results: dict[str, dict]) -> go.Figure:
         go.Bar(
             x=labels,
             y=utils,
+            marker_color=[PALETTE[0], PALETTE[1], PALETTE[3]],
+            text=[f"{u:.1f}%" for u in utils],
+            textposition="outside",
+            textfont=dict(family=MONO, size=10, color=MUTED),
+            showlegend=False,
+        )
+    )
+    style_fig(fig, title="Memory Utilization by Strategy (%)", height=300)
+    fig.update_layout(yaxis=dict(range=[0, 110], title="utilization (%)"))
