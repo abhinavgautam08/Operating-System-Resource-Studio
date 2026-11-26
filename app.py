@@ -535,3 +535,12 @@ def banker_safety(available: list[int], allocation: list[list[int]], maximum: li
         raise ValueError("Resource matrices have inconsistent dimensions.")
     if any(x < 0 for x in available) or any(x < 0 for row in allocation + maximum for x in row):
         raise ValueError("Resource counts cannot be negative.")
+    if any(maximum[i][j] < allocation[i][j] for i in range(num_procs) for j in range(num_res)):
+        raise ValueError("Maximum claim cannot be below current allocation.")
+
+    work = list(available)
+    finish = [False] * num_procs
+    need = [[maximum[i][j] - allocation[i][j] for j in range(num_res)] for i in range(num_procs)]
+    sequence: list[int] = []
+    trace: list[dict] = []
+
