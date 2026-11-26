@@ -882,3 +882,12 @@ def make_memory_map(mem_result: dict) -> go.Figure:
         fig.add_trace(
             go.Bar(
                 y=block_labels,
+                x=sizes,
+                orientation="h",
+                name=f"Segment {part_idx + 1}",
+                showlegend=False,
+                marker_color=PALETTE[part_idx % len(PALETTE)],
+                marker_line_color=SURFACE,
+                marker_line_width=1,
+                text=labels,
+                textposition="inside",
