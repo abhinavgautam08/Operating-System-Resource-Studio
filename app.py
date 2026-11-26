@@ -579,3 +579,11 @@ def banker_safety(available: list[int], allocation: list[list[int]], maximum: li
     }
 
 
+def request_resources(
+    available: list[int],
+    allocation: list[list[int]],
+    maximum: list[list[int]],
+    process: int,
+    request: list[int],
+) -> dict:
+    if not 0 <= process < len(allocation):
