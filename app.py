@@ -475,3 +475,11 @@ def _choose_memory_block(free: list[int], size: int, strat: str) -> int | None:
 
 def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_fit") -> dict:
     if not blocks or any(not isinstance(x, int) or x <= 0 for x in blocks):
+        raise ValueError("Memory blocks must be positive integers.")
+    if any(not isinstance(x, int) or x <= 0 for x in requests):
+        raise ValueError("Memory requests must be positive integers.")
+
+    strat = strategy.lower()
+    if strat not in ("first_fit", "best_fit", "worst_fit"):
+        raise ValueError(f"Unknown allocation strategy: {strategy}")
+
