@@ -1376,3 +1376,12 @@ def render_deadlock_page(ds: dict) -> None:
             st.dataframe(pd.DataFrame(dl_res["need"], columns=res_cols, index=proc_idx), width="stretch")
         with t_trace:
             if dl_res["trace"]:
+                trace_rows = [
+                    {
+                        "Step": t["step"],
+                        "Process": t["process"],
+                        "Need": str(t["need"]),
+                        "Work Before": str(t["work_before"]),
+                        "Allocation": str(t["allocation"]),
+                        "Work After": str(t["work_after"]),
+                    }
