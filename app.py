@@ -1082,3 +1082,11 @@ def _render_navigation() -> None:
                 label,
                 key=f"nav_{pname}",
                 type="primary" if active else "secondary",
+                width="stretch",
+            ):
+                st.session_state.page = pname
+                st.rerun()
+
+
+def render_overview_page(ds: dict) -> None:
+    header(
