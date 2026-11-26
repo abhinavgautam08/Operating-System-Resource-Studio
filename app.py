@@ -821,3 +821,12 @@ def make_gantt(segments: list[dict]) -> go.Figure:
             gridwidth=1,
             linecolor=IDLE,
             linewidth=1,
+            zeroline=False,
+            tickfont=dict(family=MONO, size=10, color=FAINT),
+        ),
+        yaxis=dict(showticklabels=False, showgrid=False),
+    )
+    return fig
+
+
+def make_cpu_comparison_chart(cpu_results: dict[str, dict]) -> go.Figure:
