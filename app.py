@@ -717,3 +717,12 @@ def compute_all_subsystems(ds: dict) -> dict:
     disk_results = {
         alg: disk_schedule(
             ds["disk"]["requests"],
+            int(ds["disk"]["head"]),
+            alg,
+            int(ds["disk"].get("disk_size", 200)),
+            ds["disk"].get("direction", "right"),
+        )
+        for alg in ("fcfs", "sstf", "scan")
+    }
+
+    return {
