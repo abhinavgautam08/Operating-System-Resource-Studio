@@ -449,3 +449,11 @@ def cpu_schedule(processes: list[Process], algorithm: str = "fcfs", quantum: int
         raise ValueError("Process IDs must be unique.")
 
     alg = algorithm.lower()
+    if alg not in ("fcfs", "sjf", "priority", "rr"):
+        raise ValueError(f"Unknown scheduling algorithm: {algorithm}")
+    if alg == "rr" and quantum <= 0:
+        raise ValueError("Round-robin quantum must be positive.")
+
+    if alg == "rr":
+        completion, timeline = _run_round_robin(ps, quantum)
+    else:
