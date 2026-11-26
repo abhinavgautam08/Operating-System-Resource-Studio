@@ -960,3 +960,12 @@ def make_disk_head_chart(disk_result: dict) -> go.Figure:
             marker=dict(color=PALETTE[0], size=7, line=dict(color=SURFACE, width=1.5)),
             text=[str(p) for p in path],
             textposition="top right",
+            textfont=dict(family=MONO, size=10, color=INK),
+            hovertemplate="Step %{y}<br>Track %{x}<extra></extra>",
+            showlegend=False,
+        )
+    )
+    style_fig(
+        fig,
+        title=f"Head Trajectory — {disk_result['algorithm'].upper()} (Total: {disk_result['total_movement']} tracks)",
+        height=max(290, 34 * len(path) + 80),
