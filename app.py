@@ -700,3 +700,12 @@ def disk_schedule(
     }
 
 
+def compute_all_subsystems(ds: dict) -> dict:
+    processes = [Process(**p) for p in ds["processes"]]
+    quantum = int(ds.get("quantum", 2))
+
+    cpu_results = {alg: cpu_schedule(processes, alg, quantum=quantum) for alg in ("fcfs", "sjf", "priority", "rr")}
+    mem_results = {
+        strat: mem_allocate(ds["memory"]["blocks"], ds["memory"]["requests"], strat)
+        for strat in ("first_fit", "best_fit", "worst_fit")
+    }
