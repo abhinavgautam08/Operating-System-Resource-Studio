@@ -67,3 +67,12 @@ html, body, .stApp{background:var(--paper); color:var(--ink);}
 [data-testid="stToolbar"]{display:none;}
 [data-testid="stDecoration"]{display:none;}
 #MainMenu{visibility:hidden;}
+[data-testid="stSidebar"]{background:var(--surface); border-right:1px solid var(--rule);}
+
+.block-container{max-width:1120px; padding:2.2rem 2rem 4rem;}
+
+.top-nav{
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+  padding:0.9rem 0 1.1rem; margin-bottom:0.6rem;
+  border-bottom:1px solid var(--rule);
+}
