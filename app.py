@@ -769,3 +769,12 @@ def style_fig(fig: go.Figure, title: str = "", height: int = 320) -> go.Figure:
 
 def make_gantt(segments: list[dict]) -> go.Figure:
     pids = sorted(
+        (p for p in dict.fromkeys(s["pid"] for s in segments) if p != "IDLE"),
+        key=_pid_sort_key,
+    )
+    colors = {"IDLE": IDLE}
+    for i, pid in enumerate(pids):
+        colors[pid] = PALETTE[i % len(PALETTE)]
+
+    fig = go.Figure()
+    for seg in segments:
