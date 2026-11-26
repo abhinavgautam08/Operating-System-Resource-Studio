@@ -440,3 +440,12 @@ def _run_round_robin(processes: list[Process], quantum: int) -> tuple[dict[str, 
 
     return completion, timeline
 
+
+def cpu_schedule(processes: list[Process], algorithm: str = "fcfs", quantum: int = 2) -> dict:
+    ps = list(processes)
+    if not ps:
+        raise ValueError("At least one process is required.")
+    if len({p.pid for p in ps}) != len(ps):
+        raise ValueError("Process IDs must be unique.")
+
+    alg = algorithm.lower()
