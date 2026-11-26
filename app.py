@@ -1463,3 +1463,12 @@ def render_disk_page(ds: dict) -> None:
         t_steps, t_cmp = st.tabs(["Step-by-Step Seek Trace", "All-Policy Comparison"])
         with t_steps:
             st.dataframe(pd.DataFrame(active_disk["step_distances"]), width="stretch", hide_index=True)
+        with t_cmp:
+            cmp_rows = [
+                {
+                    "Algorithm": a.upper(),
+                    "Total Movement": r["total_movement"],
+                    "Average Seek": round(r["average_movement"], 2),
+                    "Service Order": str(r["order"]),
+                }
+                for a, r in disk_results.items()
