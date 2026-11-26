@@ -657,3 +657,11 @@ def disk_schedule(
     alg = algorithm.lower()
     dir_norm = direction.lower()
     if alg not in ("fcfs", "sstf", "scan"):
+        raise ValueError(f"Unknown disk algorithm: {algorithm}")
+    if dir_norm not in ("left", "right"):
+        raise ValueError("SCAN direction must be 'left' or 'right'.")
+
+    if alg == "fcfs":
+        order = list(requests)
+    elif alg == "sstf":
+        order = _disk_order_sstf(requests, head)
