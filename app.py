@@ -180,3 +180,12 @@ PRESETS: dict[str, dict] = {
             {"pid": "P4", "arrival": 5, "burst": 4, "priority": 2},
         ],
         "memory": {
+            "blocks": [100, 500, 200, 300, 600],
+            "requests": [212, 417, 112, 426, 95],
+        },
+        "deadlock": {
+            "available": [3, 3, 2],
+            "allocation": [
+                [0, 1, 0],
+                [2, 0, 0],
+                [3, 0, 2],
