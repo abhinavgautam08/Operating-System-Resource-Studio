@@ -995,3 +995,12 @@ def make_disk_comparison_chart(disk_results: dict[str, dict]) -> go.Figure:
     totals = [disk_results[a.lower()]["total_movement"] for a in algs]
 
     fig = go.Figure(
+        go.Bar(
+            x=algs,
+            y=totals,
+            marker_color=[PALETTE[0], PALETTE[3], PALETTE[2]],
+            text=[f"{t} tracks" for t in totals],
+            textposition="outside",
+            textfont=dict(family=MONO, size=10, color=MUTED),
+            showlegend=False,
+        )
