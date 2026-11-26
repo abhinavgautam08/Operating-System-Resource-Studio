@@ -1064,3 +1064,12 @@ def _render_navigation() -> None:
         '<div class="top-nav">'
         '<div class="top-brand">'
         '<span class="top-logo">OS</span>'
+        '<span class="top-title">OS Resource Studio</span>'
+        '</div>'
+        '<div class="top-sub" style="text-align:right; color:var(--muted);">'
+        'Name: Abhinav Adarsh &nbsp;·&nbsp; Roll No: 2401010298 &nbsp;·&nbsp; Section E'
+        '</div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+
