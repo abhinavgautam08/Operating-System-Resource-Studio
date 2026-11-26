@@ -1238,3 +1238,11 @@ def render_cpu_page(ds: dict) -> None:
                 ("Avg Response", f"{active_res['avg_response']:.2f}", "time units"),
                 ("CPU Utilization", f"{active_res['cpu_utilization']:.1f}%", f"makespan {active_res['makespan']}"),
                 ("Throughput", f"{active_res['throughput']:.3f}", "proc / unit"),
+                ("Context Switches", str(active_res["context_switches"]), "burst transitions"),
+            ]
+        )
+
+        st.markdown(f"### Gantt Chart — {alg.upper()}")
+        st.plotly_chart(
+            make_gantt(active_res["segments"]),
+            width="stretch",
