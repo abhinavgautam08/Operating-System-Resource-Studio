@@ -1012,3 +1012,12 @@ def make_disk_comparison_chart(disk_results: dict[str, dict]) -> go.Figure:
 
 PAGES = [
     "Overview",
+    "CPU Scheduling",
+    "Memory Allocation",
+    "Deadlock (Banker's)",
+    "Disk Scheduling",
+    "Dataset & Export",
+]
+
+
+def header(kicker: str, title: str, subtitle: str = "") -> None:
