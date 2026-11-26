@@ -154,3 +154,12 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
   border-color:var(--accent) !important; box-shadow:0 0 0 1px var(--accent) !important;
 }
 
+.stTabs [data-baseweb="tab-list"]{gap:1.4rem; border-bottom:1px solid var(--rule);}
+.stTabs [data-baseweb="tab"]{background:transparent; border-radius:0; padding:.45rem 0;
+  font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--faint);}
+.stTabs [aria-selected="true"]{color:var(--accent) !important; border-bottom:2px solid var(--accent);}
+
+[data-testid="stDataFrame"]{border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
+[data-testid="stDataFrame"] *{font-family:'IBM Plex Mono',monospace !important; font-size:.78rem !important;}
+
