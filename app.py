@@ -570,3 +570,12 @@ def banker_safety(available: list[int], allocation: list[list[int]], maximum: li
             break
 
     is_safe = all(finish)
+    return {
+        "safe": is_safe,
+        "sequence": sequence if is_safe else [],
+        "unfinished": [i for i, done in enumerate(finish) if not done],
+        "need": need,
+        "trace": trace,
+    }
+
+
