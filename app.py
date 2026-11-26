@@ -1541,3 +1541,12 @@ def render_export_page(ds: dict) -> None:
                 compute_all_subsystems(loaded)
                 st.session_state.dataset = loaded
                 st.session_state.preset_name = uploaded.name
+                st.success(f"Loaded {uploaded.name}")
+            except Exception as exc:
+                st.error(f"Invalid dataset JSON: {exc}")
+
+    st.markdown("### Unified JSON Contract")
+    raw_json = st.text_area("Active Dataset JSON", value=json.dumps(ds, indent=2), height=280)
+    if st.button("Apply JSON Changes", type="secondary"):
+        try:
+            parsed = json.loads(raw_json)
