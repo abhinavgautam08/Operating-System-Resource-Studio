@@ -249,3 +249,12 @@ PRESETS: dict[str, dict] = {
         "processes": [
             {"pid": "P1", "arrival": 0, "burst": 6, "priority": 2},
             {"pid": "P2", "arrival": 0, "burst": 3, "priority": 1},
+            {"pid": "P3", "arrival": 1, "burst": 5, "priority": 3},
+            {"pid": "P4", "arrival": 2, "burst": 2, "priority": 1},
+        ],
+        "memory": {
+            "blocks": [200, 150, 300, 120],
+            "requests": [180, 140, 250, 130, 110],
+        },
+        "deadlock": {
+            "available": [1, 0, 0],
