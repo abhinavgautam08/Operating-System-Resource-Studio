@@ -605,3 +605,11 @@ def request_resources(
 
     check = banker_safety(next_avail, next_alloc, maximum)
     reason = "Safe state preserved" if check["safe"] else "Request would leave the system in an unsafe state"
+    return {
+        "granted": check["safe"],
+        "reason": reason,
+        "safety": check,
+        "new_available": next_avail,
+        "new_allocation": next_alloc,
+    }
+
