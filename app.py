@@ -1402,3 +1402,12 @@ def render_deadlock_page(ds: dict) -> None:
                 check_btn = st.button("Evaluate Request", type="primary", width="stretch")
             if check_btn:
                 req_res = request_resources(available, allocation, maximum, int(req_proc), parse_int_list(req_vec_text))
+                if req_res["granted"]:
+                    seq = " → ".join(f"P{i}" for i in req_res["safety"]["sequence"])
+                    st.markdown(f'<div class="callout ok"><strong>REQUEST GRANTED</strong> — {req_res["reason"]}. New safe sequence: {seq}</div>', unsafe_allow_html=True)
+                else:
+                    st.markdown(f'<div class="callout warn"><strong>REQUEST DENIED</strong> — {req_res["reason"]}</div>', unsafe_allow_html=True)
+    except Exception as exc:
+        st.error(f"Deadlock check error: {exc}")
+
+
