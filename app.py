@@ -830,3 +830,12 @@ def make_gantt(segments: list[dict]) -> go.Figure:
 
 
 def make_cpu_comparison_chart(cpu_results: dict[str, dict]) -> go.Figure:
+    algs = [a.upper() for a in cpu_results.keys()]
+    metrics = [
+        ("Avg Waiting", "avg_waiting", PALETTE[0]),
+        ("Avg Turnaround", "avg_turnaround", PALETTE[1]),
+        ("Avg Response", "avg_response", PALETTE[3]),
+    ]
+    fig = go.Figure()
+    for label, key, color in metrics:
+        vals = [round(cpu_results[a.lower()][key], 2) for a in algs]
