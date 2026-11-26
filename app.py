@@ -1212,3 +1212,11 @@ def render_cpu_page(ds: dict) -> None:
 
     edited_df = st.data_editor(
         pd.DataFrame(ds["processes"]),
+        num_rows="dynamic",
+        width="stretch",
+        column_config={
+            "pid": st.column_config.TextColumn("Process ID", required=True),
+            "arrival": st.column_config.NumberColumn("Arrival Time", min_value=0, step=1, required=True),
+            "burst": st.column_config.NumberColumn("Burst Time", min_value=1, step=1, required=True),
+            "priority": st.column_config.NumberColumn("Priority", min_value=0, step=1, required=True),
+        },
