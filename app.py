@@ -648,3 +648,12 @@ def disk_schedule(
     algorithm: str = "fcfs",
     disk_size: int = 200,
     direction: str = "right",
+) -> dict:
+    if not requests:
+        raise ValueError("At least one disk track request is required.")
+    if disk_size <= 0 or not 0 <= head < disk_size or any(not 0 <= x < disk_size for x in requests):
+        raise ValueError(f"Track positions must be within [0, {disk_size - 1}].")
+
+    alg = algorithm.lower()
+    dir_norm = direction.lower()
+    if alg not in ("fcfs", "sstf", "scan"):
