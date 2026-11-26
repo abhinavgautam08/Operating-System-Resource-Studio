@@ -24,3 +24,12 @@ if __name__ == "__main__":
 else:
     _RUN_TESTS_ON_MAIN = False
 
+import pandas as pd
+import plotly.graph_objects as go
+import streamlit as st
+from streamlit.runtime.scriptrunner import get_script_run_ctx
+
+PALETTE = [
+    "#1F4E79",
+    "#2E75B6",
+    "#A6611A",
