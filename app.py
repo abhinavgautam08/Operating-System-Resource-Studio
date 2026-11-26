@@ -67,7 +67,13 @@ html, body, .stApp{background:var(--paper); color:var(--ink);}
 [data-testid="stToolbar"]{display:none;}
 [data-testid="stDecoration"]{display:none;}
 #MainMenu{visibility:hidden;}
-[data-testid="stSidebar"]{background:var(--surface); border-right:1px solid var(--rule);}
+[data-testid="stSidebar"]{
+  background:var(--surface); border-right:1px solid var(--rule);
+  min-width:250px !important; max-width:270px !important;
+  transform:none !important; visibility:visible !important; display:flex !important;
+}
+[data-testid="stSidebar"][aria-expanded="false"]{margin-left:0 !important; transform:none !important;}
+[data-testid="stSidebarCollapseButton"], [data-testid="collapsedControl"]{display:none !important;}
 
 .block-container{max-width:1120px; padding:2.2rem 2rem 4rem;}
 
