@@ -1636,3 +1636,12 @@ class TestMemory(unittest.TestCase):
     def test_strategies(self) -> None:
         blocks = [100, 500, 200, 300, 600]
         reqs = [212, 417, 112, 426, 95]
+        ff = mem_allocate(blocks, reqs, "first_fit")
+        bf = mem_allocate(blocks, reqs, "best_fit")
+        wf = mem_allocate(blocks, reqs, "worst_fit")
+
+        self.assertEqual(ff["allocated_count"], 4)
+        self.assertEqual(bf["allocated_count"], 5)
+        self.assertEqual(wf["allocated_count"], 4)
+        self.assertEqual(len(bf["block_contents"]), len(blocks))
+
