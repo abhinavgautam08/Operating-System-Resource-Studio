@@ -1550,3 +1550,11 @@ def render_export_page(ds: dict) -> None:
     if st.button("Apply JSON Changes", type="secondary"):
         try:
             parsed = json.loads(raw_json)
+            compute_all_subsystems(parsed)
+            st.session_state.dataset = parsed
+            st.session_state.preset_name = "Custom JSON"
+            st.success("Dataset updated.")
+        except Exception as exc:
+            st.error(f"Validation failed: {exc}")
+
+    st.markdown("### Export Reports")
