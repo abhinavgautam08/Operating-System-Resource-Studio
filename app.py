@@ -197,3 +197,12 @@ PRESETS: dict[str, dict] = {
                 [3, 2, 2],
                 [9, 0, 2],
                 [2, 2, 2],
+                [4, 3, 3],
+            ],
+        },
+        "disk": {
+            "requests": [98, 183, 37, 122, 14, 124, 65, 67],
+            "head": 53,
+            "disk_size": 200,
+            "direction": "right",
+        },
