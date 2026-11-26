@@ -613,3 +613,12 @@ def request_resources(
         "new_allocation": next_alloc,
     }
 
+
+def _disk_order_sstf(requests: list[int], head: int) -> list[int]:
+    remaining = list(enumerate(requests))
+    order: list[int] = []
+    current = head
+
+    while remaining:
+        best_idx, best_track = min(remaining, key=lambda pair: (abs(pair[1] - current), pair[0]))
+        order.append(best_track)
