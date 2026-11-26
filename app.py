@@ -1584,3 +1584,12 @@ PAGE_RENDERERS = {
     "Disk Scheduling": render_disk_page,
     "Dataset & Export": render_export_page,
 }
+
+
+def render_app() -> None:
+    st.set_page_config(
+        page_title="OS Resource Studio",
+        layout="wide",
+        initial_sidebar_state="expanded",
+    )
+    st.markdown(CSS, unsafe_allow_html=True)
