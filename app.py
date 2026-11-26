@@ -527,3 +527,11 @@ def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_
 
 def banker_safety(available: list[int], allocation: list[list[int]], maximum: list[list[int]]) -> dict:
     num_procs = len(allocation)
+    num_res = len(available)
+
+    if num_procs == 0 or len(maximum) != num_procs:
+        raise ValueError("Resource matrices have inconsistent dimensions.")
+    if any(len(row) != num_res for row in allocation + maximum):
+        raise ValueError("Resource matrices have inconsistent dimensions.")
+    if any(x < 0 for x in available) or any(x < 0 for row in allocation + maximum for x in row):
+        raise ValueError("Resource counts cannot be negative.")
