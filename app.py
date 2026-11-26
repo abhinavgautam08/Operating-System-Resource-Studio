@@ -908,3 +908,12 @@ def make_memory_map(mem_result: dict) -> go.Figure:
             marker_color=FREE_FILL,
             marker_line_color=RULE,
             marker_line_width=1,
+            text=[f"Free ({f})" if f > 0 else "" for f in final_free],
+            textposition="inside",
+            insidetextanchor="middle",
+            textfont=dict(family=MONO, size=10, color=MUTED),
+            hovertemplate="<b>Free Space</b><br>%{y}<br>Remaining: %{x}<extra></extra>",
+        )
+    )
+
+    style_fig(fig, title="Contiguous Block Partition Map", height=max(240, 48 * len(blocks) + 90))
