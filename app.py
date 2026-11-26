@@ -284,3 +284,12 @@ PRESETS: dict[str, dict] = {
 def get_preset(name: str) -> dict:
     return deepcopy(PRESETS[name])
 
+
+def parse_int_list(text: str) -> list[int]:
+    parts = [p.strip() for p in text.split(",") if p.strip()]
+    if not parts:
+        raise ValueError("Enter at least one integer value.")
+    return [int(p) for p in parts]
+
+
+@dataclass(frozen=True)
