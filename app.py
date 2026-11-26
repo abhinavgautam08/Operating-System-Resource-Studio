@@ -943,3 +943,12 @@ def make_memory_comparison_chart(mem_results: dict[str, dict]) -> go.Figure:
     )
     style_fig(fig, title="Memory Utilization by Strategy (%)", height=300)
     fig.update_layout(yaxis=dict(range=[0, 110], title="utilization (%)"))
+    return fig
+
+
+def make_disk_head_chart(disk_result: dict) -> go.Figure:
+    path = disk_result["path"]
+    steps = list(range(len(path)))
+
+    fig = go.Figure()
+    fig.add_trace(
