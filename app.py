@@ -839,3 +839,12 @@ def make_cpu_comparison_chart(cpu_results: dict[str, dict]) -> go.Figure:
     fig = go.Figure()
     for label, key, color in metrics:
         vals = [round(cpu_results[a.lower()][key], 2) for a in algs]
+        fig.add_trace(
+            go.Bar(
+                name=label,
+                x=algs,
+                y=vals,
+                marker_color=color,
+                text=[f"{v:.2f}" for v in vals],
+                textposition="outside",
+                textfont=dict(family=MONO, size=10, color=MUTED),
