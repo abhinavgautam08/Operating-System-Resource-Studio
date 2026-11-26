@@ -371,3 +371,11 @@ def _cpu_metrics(
         "context_switches": context_switches,
     }
 
+
+def _pick_next_process(ready: list[Process], alg: str, original_order: dict[str, int]) -> Process:
+    if alg == "fcfs":
+        return min(ready, key=lambda p: (p.arrival, original_order[p.pid]))
+    if alg == "sjf":
+        return min(ready, key=lambda p: (p.burst, p.arrival, original_order[p.pid]))
+    return min(ready, key=lambda p: (p.priority, p.arrival, original_order[p.pid]))
+
