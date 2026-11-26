@@ -1342,3 +1342,11 @@ def render_deadlock_page(ds: dict) -> None:
 
     dl = ds["deadlock"]
     res_cols = [f"R{j}" for j in range(len(dl["available"]))]
+    proc_idx = [f"P{i}" for i in range(len(dl["allocation"]))]
+
+    avail_col, alloc_col, max_col = st.columns([1, 1.4, 1.4])
+    with avail_col:
+        avail_text = st.text_input("Available Vector", value=", ".join(map(str, dl["available"])))
+    with alloc_col:
+        st.markdown('<div class="note">Allocation Matrix</div>', unsafe_allow_html=True)
+        edited_alloc = st.data_editor(pd.DataFrame(dl["allocation"], columns=res_cols, index=proc_idx), width="stretch", key="alloc_editor")
