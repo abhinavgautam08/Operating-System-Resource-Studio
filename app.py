@@ -1307,3 +1307,12 @@ def render_memory_page(ds: dict) -> None:
                 ("Unallocated", str(active_mem["unallocated_count"]), "rejected requests", "bad" if active_mem["unallocated_count"] > 0 else "ok"),
             ]
         )
+
+        st.plotly_chart(make_memory_map(active_mem), width="stretch", config={"displaylogo": False})
+
+        t_trace, t_cmp = st.tabs(["Allocation Trace", "Strategy Comparison"])
+        with t_trace:
+            trace_df = pd.DataFrame(active_mem["allocations"])
+            trace_df["block"] = trace_df["block"].apply(lambda b: f"Block {int(b)}" if pd.notna(b) else "—")
+            trace_df["remaining_in_block"] = trace_df["remaining_in_block"].apply(lambda v: str(int(v)) if pd.notna(v) else "—")
+            st.dataframe(trace_df, width="stretch", hide_index=True)
