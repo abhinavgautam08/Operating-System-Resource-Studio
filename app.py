@@ -379,3 +379,12 @@ def _pick_next_process(ready: list[Process], alg: str, original_order: dict[str,
         return min(ready, key=lambda p: (p.burst, p.arrival, original_order[p.pid]))
     return min(ready, key=lambda p: (p.priority, p.arrival, original_order[p.pid]))
 
+
+def _run_non_preemptive(processes: list[Process], alg: str) -> tuple[dict[str, int], list[tuple[int, int, str]]]:
+    original_order = {p.pid: idx for idx, p in enumerate(processes)}
+    pending = list(processes)
+    now = 0
+    completion: dict[str, int] = {}
+    timeline: list[tuple[int, int, str]] = []
+
+    while pending:
