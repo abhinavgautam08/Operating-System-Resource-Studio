@@ -735,3 +735,11 @@ def compute_all_subsystems(ds: dict) -> dict:
 
 def _pid_sort_key(pid: str) -> tuple:
     prefix, digits = re.match(r"^(\D*)(\d*)", str(pid)).groups()
+    return (prefix, int(digits) if digits else -1, str(pid))
+
+
+def style_fig(fig: go.Figure, title: str = "", height: int = 320) -> go.Figure:
+    title_cfg = dict(text=title, font=dict(family=SERIF, size=15, color=INK), x=0, xanchor="left") if title else None
+    fig.update_layout(
+        paper_bgcolor=SURFACE,
+        plot_bgcolor=SURFACE,
