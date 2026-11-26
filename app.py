@@ -1472,3 +1472,11 @@ def render_disk_page(ds: dict) -> None:
                     "Service Order": str(r["order"]),
                 }
                 for a, r in disk_results.items()
+            ]
+            st.dataframe(pd.DataFrame(cmp_rows), width="stretch", hide_index=True)
+            st.plotly_chart(make_disk_comparison_chart(disk_results), width="stretch", config={"displaylogo": False})
+    except Exception as exc:
+        st.error(f"Disk Scheduling error: {exc}")
+
+
+def _build_export_tables(all_res: dict) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
