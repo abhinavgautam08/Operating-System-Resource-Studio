@@ -1290,3 +1290,11 @@ def render_memory_page(ds: dict) -> None:
         )
         st.session_state.mem_strat = strat
 
+    try:
+        blocks = parse_int_list(blocks_text)
+        mem_reqs = parse_int_list(reqs_text)
+        ds["memory"]["blocks"] = blocks
+        ds["memory"]["requests"] = mem_reqs
+
+        mem_results = {s: mem_allocate(blocks, mem_reqs, s) for s in strategies}
+        active_mem = mem_results[strat]
