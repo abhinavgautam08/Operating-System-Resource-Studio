@@ -778,3 +778,12 @@ def make_gantt(segments: list[dict]) -> go.Figure:
 
     fig = go.Figure()
     for seg in segments:
+        duration = seg["end"] - seg["start"]
+        fig.add_trace(
+            go.Bar(
+                x=[duration],
+                y=["CPU"],
+                base=[seg["start"]],
+                orientation="h",
+                name=seg["pid"],
+                marker_color=colors[seg["pid"]],
