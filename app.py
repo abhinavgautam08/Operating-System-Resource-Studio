@@ -128,3 +128,12 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
   transition:background-color .12s ease, border-color .12s ease;
 }
 .stButton > button[kind="primary"]{background:var(--accent); border:1px solid var(--accent);}
+.stButton > button[kind="primary"] p{color:#fff !important;}
+.stButton > button[kind="primary"]:hover{background:var(--accent-dark); border-color:var(--accent-dark);}
+.stButton > button[kind="secondary"], .stDownloadButton > button{
+  background:transparent; border:1px solid var(--rule-strong); color:var(--ink);
+}
+.stButton > button[kind="secondary"] p, .stDownloadButton > button p{color:var(--ink) !important;}
+.stButton > button[kind="secondary"]:hover, .stDownloadButton > button:hover{
+  border-color:var(--accent); background:var(--wash);
+}
