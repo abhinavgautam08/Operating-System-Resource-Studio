@@ -1558,3 +1558,12 @@ def render_export_page(ds: dict) -> None:
             st.error(f"Validation failed: {exc}")
 
     st.markdown("### Export Reports")
+    try:
+        all_res = compute_all_subsystems(st.session_state.dataset)
+        sched_df, mem_df, disk_df = _build_export_tables(all_res)
+
+        d1, d2, d3, d4 = st.columns(4)
+        downloads = [
+            (d1, "analysis.json", json.dumps(all_res, indent=2), "application/json"),
+            (d2, "scheduling.csv", sched_df.to_csv(index=False), "text/csv"),
+            (d3, "memory.csv", mem_df.to_csv(index=False), "text/csv"),
