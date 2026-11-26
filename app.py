@@ -1428,3 +1428,12 @@ def render_disk_page(ds: dict) -> None:
     with c3:
         disk_size = st.number_input("Disk Size", min_value=1, value=int(dsk.get("disk_size", 200)), step=1)
     with c4:
+        direction = st.selectbox("SCAN Direction", ["right", "left"], index=0 if dsk.get("direction", "right") == "right" else 1)
+    with c5:
+        disk_alg = st.selectbox(
+            "Inspect Policy",
+            algs,
+            index=algs.index(st.session_state.disk_alg),
+            format_func=str.upper,
+        )
+        st.session_state.disk_alg = disk_alg
