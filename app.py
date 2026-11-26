@@ -544,3 +544,12 @@ def banker_safety(available: list[int], allocation: list[list[int]], maximum: li
     sequence: list[int] = []
     trace: list[dict] = []
 
+    while True:
+        progressed = False
+        for i in range(num_procs):
+            if finish[i]:
+                continue
+            can_finish = all(need[i][j] <= work[j] for j in range(num_res))
+            if can_finish:
+                work_before = list(work)
+                work = [work[j] + allocation[i][j] for j in range(num_res)]
