@@ -1515,3 +1515,12 @@ def _build_export_tables(all_res: dict) -> tuple[pd.DataFrame, pd.DataFrame, pd.
             }
             for a, r in all_res["disk"].items()
         ]
+    )
+    return sched_df, mem_df, disk_df
+
+
+def render_export_page(ds: dict) -> None:
+    header(
+        "Configuration & Artifacts",
+        "Dataset & Export",
+        "Load a curated workload, upload or edit the unified JSON contract, and export CSV summaries or the full analysis bundle.",
