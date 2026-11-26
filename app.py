@@ -1576,3 +1576,11 @@ def render_export_page(ds: dict) -> None:
         st.error(f"Export unavailable: {exc}")
 
 
+PAGE_RENDERERS = {
+    "Overview": render_overview_page,
+    "CPU Scheduling": render_cpu_page,
+    "Memory Allocation": render_memory_page,
+    "Deadlock (Banker's)": render_deadlock_page,
+    "Disk Scheduling": render_disk_page,
+    "Dataset & Export": render_export_page,
+}
