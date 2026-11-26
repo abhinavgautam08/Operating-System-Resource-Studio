@@ -813,3 +813,11 @@ def make_gantt(segments: list[dict]) -> go.Figure:
         plot_bgcolor=SURFACE,
         font=dict(family=MONO, size=11, color=MUTED),
         hoverlabel=dict(bgcolor=SURFACE, bordercolor=RULE, font=dict(family=MONO, size=11, color=INK)),
+        xaxis=dict(
+            title=dict(text="time (units)", font=dict(family=MONO, size=10, color=FAINT)),
+            range=[0, end],
+            dtick=1 if end <= 30 else None,
+            gridcolor=GRID,
+            gridwidth=1,
+            linecolor=IDLE,
+            linewidth=1,
