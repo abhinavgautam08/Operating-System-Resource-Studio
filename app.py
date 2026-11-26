@@ -1186,3 +1186,11 @@ def _clean_process_rows(edited_df: pd.DataFrame) -> list[dict]:
 def render_cpu_page(ds: dict) -> None:
     header(
         "Subsystem 01 · CPU",
+        "CPU Scheduling & Gantt Trace",
+        "Edit the process table directly to compare First-Come First-Served, Shortest Job First, Priority (lower value = higher priority), and preemptive Round Robin.",
+    )
+
+    alg_labels = {
+        "fcfs": "FCFS — First-Come, First-Served",
+        "sjf": "SJF — Shortest Job First (Non-preemptive)",
+        "priority": "Priority — Non-preemptive (Lower = Higher)",
