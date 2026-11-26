@@ -969,3 +969,12 @@ def make_disk_head_chart(disk_result: dict) -> go.Figure:
         fig,
         title=f"Head Trajectory — {disk_result['algorithm'].upper()} (Total: {disk_result['total_movement']} tracks)",
         height=max(290, 34 * len(path) + 80),
+    )
+    fig.update_layout(
+        xaxis=dict(
+            title="cylinder / track",
+            range=[-5, disk_result["disk_size"] + 5],
+            gridcolor=GRID,
+            linecolor=IDLE,
+            tickfont=dict(family=MONO, size=10, color=FAINT),
+        ),
