@@ -1090,3 +1090,12 @@ def _render_navigation() -> None:
 
 def render_overview_page(ds: dict) -> None:
     header(
+        "Integrated Summary",
+        "Operating System Resource Management",
+        "Unified comparison across CPU scheduling, contiguous memory allocation, Banker's deadlock avoidance, and disk head scheduling on a shared workload.",
+    )
+
+    ctrl_l, ctrl_r = st.columns([3, 1])
+    with ctrl_l:
+        preset_names = list(PRESETS.keys())
+        current_name = st.session_state.preset_name
