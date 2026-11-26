@@ -111,3 +111,11 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
 .stat-value.bad{color:var(--bad);}
 .stat-note{font-family:'IBM Plex Mono',monospace; font-size:.66rem; color:var(--faint);}
 
+.panel{background:var(--surface); border:1px solid var(--rule); border-radius:2px;
+  padding:1.05rem 1.25rem; margin:.5rem 0 1rem;}
+.panel p:last-child{margin-bottom:0;}
+
+.callout{border:1px solid var(--rule); border-left:3px solid var(--accent); background:var(--surface);
+  border-radius:2px; padding:.85rem 1.1rem; margin:.75rem 0 1.1rem;
+  font-family:'IBM Plex Mono',monospace; font-size:.8rem; color:var(--ink);}
+.callout.ok{border-left-color:var(--ok);}
