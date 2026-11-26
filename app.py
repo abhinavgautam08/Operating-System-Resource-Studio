@@ -1030,3 +1030,11 @@ def header(kicker: str, title: str, subtitle: str = "") -> None:
 
 def stat(label: str, value: str, note: str = "", tone: str = "") -> None:
     tone_cls = f" {tone}" if tone else ""
+    st.markdown(
+        f'<div class="stat"><div class="stat-label">{label}</div>'
+        f'<div class="stat-value{tone_cls}">{value}</div>'
+        f'<div class="stat-note">{note}</div></div>',
+        unsafe_allow_html=True,
+    )
+
+
