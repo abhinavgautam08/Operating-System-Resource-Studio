@@ -466,3 +466,12 @@ def _choose_memory_block(free: list[int], size: int, strat: str) -> int | None:
     candidates = [i for i, space in enumerate(free) if space >= size]
     if not candidates:
         return None
+    if strat == "first_fit":
+        return candidates[0]
+    if strat == "best_fit":
+        return min(candidates, key=lambda i: free[i])
+    return max(candidates, key=lambda i: free[i])
+
+
+def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_fit") -> dict:
+    if not blocks or any(not isinstance(x, int) or x <= 0 for x in blocks):
