@@ -1628,3 +1628,11 @@ class TestScheduler(unittest.TestCase):
         procs = [Process("P1", 2, 3, 1), Process("P2", 8, 2, 1)]
         res = cpu_schedule(procs, "fcfs")
         pids = [s["pid"] for s in res["segments"]]
+        self.assertEqual(pids, ["IDLE", "P1", "IDLE", "P2"])
+        self.assertLess(res["cpu_utilization"], 100.0)
+
+
+class TestMemory(unittest.TestCase):
+    def test_strategies(self) -> None:
+        blocks = [100, 500, 200, 300, 600]
+        reqs = [212, 417, 112, 426, 95]
