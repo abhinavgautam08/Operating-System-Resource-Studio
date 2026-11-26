@@ -752,3 +752,12 @@ def style_fig(fig: go.Figure, title: str = "", height: int = 320) -> go.Figure:
         xaxis=dict(
             gridcolor=GRID,
             linecolor=IDLE,
+            linewidth=1,
+            zeroline=False,
+            tickfont=dict(family=MONO, size=10, color=FAINT),
+        ),
+        yaxis=dict(
+            gridcolor=GRID,
+            linecolor=IDLE,
+            linewidth=1,
+            zeroline=False,
