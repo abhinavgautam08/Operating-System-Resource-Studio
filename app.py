@@ -423,3 +423,11 @@ def _run_round_robin(processes: list[Process], quantum: int) -> tuple[dict[str, 
             index += 1
 
         current = ready.popleft()
+        run_time = min(quantum, remaining[current.pid])
+        start = now
+        now += run_time
+        timeline.append((start, now, current.pid))
+        remaining[current.pid] -= run_time
+
+        while index < len(arrivals) and arrivals[index].arrival <= now:
+            ready.append(arrivals[index])
