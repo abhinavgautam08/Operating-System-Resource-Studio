@@ -874,3 +874,11 @@ def make_memory_map(mem_result: dict) -> go.Figure:
                 sizes.append(item["size"])
                 labels.append(f"{item['request']} ({item['size']})")
                 hovers.append(f"<b>{item['request']}</b><br>Block {b_idx + 1}<br>Size: {item['size']}")
+            else:
+                sizes.append(0)
+                labels.append("")
+                hovers.append("")
+
+        fig.add_trace(
+            go.Bar(
+                y=block_labels,
