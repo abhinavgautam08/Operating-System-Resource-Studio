@@ -1203,3 +1203,12 @@ def render_cpu_page(ds: dict) -> None:
             "Active Policy",
             list(alg_labels.keys()),
             index=list(alg_labels.keys()).index(st.session_state.cpu_alg),
+            format_func=lambda a: alg_labels[a],
+        )
+        st.session_state.cpu_alg = alg
+    with c2:
+        quantum = st.number_input("Round Robin Quantum", min_value=1, max_value=50, value=int(ds.get("quantum", 2)), step=1)
+        ds["quantum"] = int(quantum)
+
+    edited_df = st.data_editor(
+        pd.DataFrame(ds["processes"]),
