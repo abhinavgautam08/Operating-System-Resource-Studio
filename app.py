@@ -1645,3 +1645,12 @@ class TestMemory(unittest.TestCase):
         self.assertEqual(wf["allocated_count"], 4)
         self.assertEqual(len(bf["block_contents"]), len(blocks))
 
+
+class TestDeadlock(unittest.TestCase):
+    def test_safe_and_request(self) -> None:
+        ds = get_preset("Lab Standard (Default)")["deadlock"]
+        res = banker_safety(ds["available"], ds["allocation"], ds["maximum"])
+        self.assertTrue(res["safe"])
+        self.assertEqual(res["sequence"], [1, 3, 4, 0, 2])
+        self.assertEqual(len(res["trace"]), 5)
+
