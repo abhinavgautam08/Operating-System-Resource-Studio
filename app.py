@@ -1194,3 +1194,12 @@ def render_cpu_page(ds: dict) -> None:
         "fcfs": "FCFS — First-Come, First-Served",
         "sjf": "SJF — Shortest Job First (Non-preemptive)",
         "priority": "Priority — Non-preemptive (Lower = Higher)",
+        "rr": "Round Robin — Preemptive Time-Sliced",
+    }
+
+    c1, c2 = st.columns([2, 1])
+    with c1:
+        alg = st.selectbox(
+            "Active Policy",
+            list(alg_labels.keys()),
+            index=list(alg_labels.keys()).index(st.session_state.cpu_alg),
