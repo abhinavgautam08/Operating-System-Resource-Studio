@@ -50,3 +50,12 @@ SURFACE = "#FFFFFF"
 SERIF = "Source Serif 4, Georgia, serif"
 MONO = "IBM Plex Mono, SFMono-Regular, Consolas, monospace"
 
+CSS = """
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --paper:#FBFAF7; --surface:#FFFFFF; --ink:#1A1A1A; --muted:#5F5F5F;
+  --faint:#8A8A8A; --rule:#DAD5C9; --rule-strong:#B9B2A3;
+  --accent:#1F4E79; --accent-dark:#173B5C; --wash:#EAF0F6;
+  --ok:#3F6B4F; --warn:#8C5A1B; --bad:#8C2F1B;
