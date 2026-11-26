@@ -665,3 +665,12 @@ def disk_schedule(
         order = list(requests)
     elif alg == "sstf":
         order = _disk_order_sstf(requests, head)
+    else:
+        order = _disk_order_scan(requests, head, disk_size, dir_norm)
+
+    path = [head]
+    step_distances = []
+    total = 0
+
+    for step_idx, target in enumerate(order, 1):
+        prev = path[-1]
