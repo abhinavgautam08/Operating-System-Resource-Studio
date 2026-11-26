@@ -1359,3 +1359,12 @@ def render_deadlock_page(ds: dict) -> None:
         allocation = edited_alloc.astype(int).values.tolist()
         maximum = edited_max.astype(int).values.tolist()
         dl["available"] = available
+        dl["allocation"] = allocation
+        dl["maximum"] = maximum
+
+        dl_res = banker_safety(available, allocation, maximum)
+
+        if dl_res["safe"]:
+            seq_str = " → ".join(f"P{i}" for i in dl_res["sequence"])
+            st.markdown(f'<div class="callout ok"><strong>SYSTEM SAFE</strong> — Completion sequence: {seq_str}</div>', unsafe_allow_html=True)
+        else:
