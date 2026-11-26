@@ -241,3 +241,11 @@ PRESETS: dict[str, dict] = {
             "requests": [176, 79, 34, 60, 92, 11, 41, 114],
             "head": 50,
             "disk_size": 200,
+            "direction": "left",
+        },
+    },
+    "Unsafe Deadlock & Fragmentation": {
+        "quantum": 2,
+        "processes": [
+            {"pid": "P1", "arrival": 0, "burst": 6, "priority": 2},
+            {"pid": "P2", "arrival": 0, "burst": 3, "priority": 1},
