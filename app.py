@@ -1065,9 +1065,21 @@ def _init_session_state() -> None:
             st.session_state[key] = value
 
 
+PAGE_TITLES = {
+    "Overview": "Operating System Resource Management",
+    "CPU Scheduling": "CPU Scheduling & Gantt Trace",
+    "Memory Allocation": "Contiguous Memory Allocation",
+    "Deadlock (Banker's)": "Banker's Safety Algorithm",
+    "Disk Scheduling": "Disk Head Scheduling",
+    "Dataset & Export": "Dataset & Export",
+}
+
+
 def _render_navigation() -> None:
+    current_title = PAGE_TITLES.get(st.session_state.page, "OS Resource Studio")
     st.markdown(
-        '<div class="top-nav" style="justify-content:flex-end;">'
+        '<div class="top-nav">'
+        f'<div class="top-title">{current_title}</div>'
         '<div class="top-sub" style="text-align:right; color:var(--muted);">'
         'Name: Abhinav Adarsh &nbsp;·&nbsp; Roll No: 2401010298 &nbsp;·&nbsp; Section E'
         '</div>'
