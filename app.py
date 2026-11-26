@@ -631,3 +631,11 @@ def _disk_order_sstf(requests: list[int], head: int) -> list[int]:
 def _disk_order_scan(requests: list[int], head: int, disk_size: int, direction: str) -> list[int]:
     left = sorted((x for x in requests if x < head), reverse=True)
     right = sorted(x for x in requests if x >= head)
+
+    if direction == "right":
+        if left:
+            return right + [disk_size - 1] + left
+        return right
+
+    if right:
+        return left + [0] + right
