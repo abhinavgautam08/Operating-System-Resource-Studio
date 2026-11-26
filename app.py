@@ -1116,3 +1116,12 @@ def render_overview_page(ds: dict) -> None:
         mem_res = all_res["memory"]
         dl_res = all_res["deadlock"]
         disk_res = all_res["disk"]
+
+        best_cpu_name, best_cpu = min(cpu_res.items(), key=lambda kv: kv[1]["avg_waiting"])
+        best_mem_name, best_mem = max(mem_res.items(), key=lambda kv: (kv[1]["allocated_count"], kv[1]["utilization_pct"]))
+        best_disk_name, best_disk = min(disk_res.items(), key=lambda kv: kv[1]["total_movement"])
+
+        dl_state = "SAFE" if dl_res["safe"] else "UNSAFE"
+        dl_note = f"seq {dl_res['sequence']}" if dl_res["safe"] else f"unfinished {dl_res['unfinished']}"
+        dl_tone = "ok" if dl_res["safe"] else "bad"
+
