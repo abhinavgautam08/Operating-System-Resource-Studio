@@ -1004,3 +1004,11 @@ def make_disk_comparison_chart(disk_results: dict[str, dict]) -> go.Figure:
             textfont=dict(family=MONO, size=10, color=MUTED),
             showlegend=False,
         )
+    )
+    style_fig(fig, title="Total Head Movement Comparison (lower is better)", height=300)
+    fig.update_layout(yaxis_title="tracks moved")
+    return fig
+
+
+PAGES = [
+    "Overview",
