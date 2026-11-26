@@ -1073,3 +1073,12 @@ def _render_navigation() -> None:
         unsafe_allow_html=True,
     )
 
+    with st.sidebar:
+        st.markdown('<div class="kicker">Navigation</div>', unsafe_allow_html=True)
+        for pname in PAGES:
+            active = st.session_state.page == pname
+            label = f"● {pname}" if active else pname
+            if st.button(
+                label,
+                key=f"nav_{pname}",
+                type="primary" if active else "secondary",
