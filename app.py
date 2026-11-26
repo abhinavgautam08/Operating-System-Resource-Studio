@@ -1654,3 +1654,11 @@ class TestDeadlock(unittest.TestCase):
         self.assertEqual(res["sequence"], [1, 3, 4, 0, 2])
         self.assertEqual(len(res["trace"]), 5)
 
+        grant = request_resources(ds["available"], ds["allocation"], ds["maximum"], 1, [1, 0, 2])
+        self.assertTrue(grant["granted"])
+
+        deny = request_resources(ds["available"], ds["allocation"], ds["maximum"], 0, [3, 3, 0])
+        self.assertFalse(deny["granted"])
+
+    def test_unsafe_preset(self) -> None:
+        ds = get_preset("Unsafe Deadlock & Fragmentation")["deadlock"]
