@@ -1220,3 +1220,12 @@ def render_cpu_page(ds: dict) -> None:
             "burst": st.column_config.NumberColumn("Burst Time", min_value=1, step=1, required=True),
             "priority": st.column_config.NumberColumn("Priority", min_value=0, step=1, required=True),
         },
+        key="cpu_editor",
+    )
+
+    try:
+        clean_procs = _clean_process_rows(edited_df)
+        ds["processes"] = clean_procs
+        processes = [Process(**p) for p in clean_procs]
+
+        cpu_results = {a: cpu_schedule(processes, a, quantum=int(quantum)) for a in ("fcfs", "sjf", "priority", "rr")}
