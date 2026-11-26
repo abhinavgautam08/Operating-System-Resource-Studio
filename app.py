@@ -1454,3 +1454,12 @@ def render_disk_page(ds: dict) -> None:
                 ("Active Policy", disk_alg.upper(), f"direction: {direction}"),
                 ("Total Head Movement", f"{active_disk['total_movement']}", "tracks traversed"),
                 ("Average Seek", f"{active_disk['average_movement']:.2f}", "tracks / request"),
+                ("Best on Workload", best_alg.upper(), f"{best_disk['total_movement']} tracks"),
+            ]
+        )
+
+        st.plotly_chart(make_disk_head_chart(active_disk), width="stretch", config={"displaylogo": False})
+
+        t_steps, t_cmp = st.tabs(["Step-by-Step Seek Trace", "All-Policy Comparison"])
+        with t_steps:
+            st.dataframe(pd.DataFrame(active_disk["step_distances"]), width="stretch", hide_index=True)
