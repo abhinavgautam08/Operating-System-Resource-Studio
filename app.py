@@ -1524,3 +1524,11 @@ def render_export_page(ds: dict) -> None:
         "Configuration & Artifacts",
         "Dataset & Export",
         "Load a curated workload, upload or edit the unified JSON contract, and export CSV summaries or the full analysis bundle.",
+    )
+
+    p1, p2 = st.columns([2, 2])
+    with p1:
+        selected_preset = st.selectbox("Load Curated Preset", list(PRESETS.keys()))
+        if st.button("Apply Preset", type="primary"):
+            st.session_state.preset_name = selected_preset
+            st.session_state.dataset = get_preset(selected_preset)
