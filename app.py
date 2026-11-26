@@ -518,3 +518,12 @@ def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_
         "allocated_count": allocated_count,
         "unallocated_count": len(rows) - allocated_count,
         "total_capacity": total_capacity,
+        "total_allocated": total_allocated,
+        "total_free": total_free,
+        "utilization_pct": (total_allocated / total_capacity * 100.0) if total_capacity else 0.0,
+        "internal_fragmentation": total_free,
+    }
+
+
+def banker_safety(available: list[int], allocation: list[list[int]], maximum: list[list[int]]) -> dict:
+    num_procs = len(allocation)
