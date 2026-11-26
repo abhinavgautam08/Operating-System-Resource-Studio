@@ -1532,3 +1532,12 @@ def render_export_page(ds: dict) -> None:
         if st.button("Apply Preset", type="primary"):
             st.session_state.preset_name = selected_preset
             st.session_state.dataset = get_preset(selected_preset)
+            st.rerun()
+    with p2:
+        uploaded = st.file_uploader("Upload Custom JSON Dataset", type=["json"])
+        if uploaded is not None:
+            try:
+                loaded = json.loads(uploaded.read().decode("utf-8"))
+                compute_all_subsystems(loaded)
+                st.session_state.dataset = loaded
+                st.session_state.preset_name = uploaded.name
