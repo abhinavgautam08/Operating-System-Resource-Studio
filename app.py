@@ -1177,3 +1177,12 @@ def _clean_process_rows(edited_df: pd.DataFrame) -> list[dict]:
                 "pid": pid,
                 "arrival": int(row["arrival"]) if pd.notna(row["arrival"]) else 0,
                 "burst": int(row["burst"]) if pd.notna(row["burst"]) else 1,
+                "priority": int(row["priority"]) if pd.notna(row["priority"]) else 0,
+            }
+        )
+    return clean
+
+
+def render_cpu_page(ds: dict) -> None:
+    header(
+        "Subsystem 01 · CPU",
