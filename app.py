@@ -553,3 +553,11 @@ def banker_safety(available: list[int], allocation: list[list[int]], maximum: li
             if can_finish:
                 work_before = list(work)
                 work = [work[j] + allocation[i][j] for j in range(num_res)]
+                finish[i] = True
+                sequence.append(i)
+                trace.append(
+                    {
+                        "step": len(sequence),
+                        "process": f"P{i}",
+                        "need": list(need[i]),
+                        "work_before": work_before,
