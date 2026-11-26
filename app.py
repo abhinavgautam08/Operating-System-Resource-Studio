@@ -1067,11 +1067,7 @@ def _init_session_state() -> None:
 
 def _render_navigation() -> None:
     st.markdown(
-        '<div class="top-nav">'
-        '<div class="top-brand">'
-        '<span class="top-logo">OS</span>'
-        '<span class="top-title">OS Resource Studio</span>'
-        '</div>'
+        '<div class="top-nav" style="justify-content:flex-end;">'
         '<div class="top-sub" style="text-align:right; color:var(--muted);">'
         'Name: Abhinav Adarsh &nbsp;·&nbsp; Roll No: 2401010298 &nbsp;·&nbsp; Section E'
         '</div>'
@@ -1080,6 +1076,13 @@ def _render_navigation() -> None:
     )
 
     with st.sidebar:
+        st.markdown(
+            '<div class="top-brand" style="padding-bottom:1rem; margin-bottom:1rem; border-bottom:1px solid var(--rule);">'
+            '<span class="top-logo">OS</span>'
+            '<span class="top-title" style="font-size:1.15rem;">OS Resource Studio</span>'
+            '</div>',
+            unsafe_allow_html=True,
+        )
         st.markdown('<div class="kicker">Navigation</div>', unsafe_allow_html=True)
         for pname in PAGES:
             active = st.session_state.page == pname
