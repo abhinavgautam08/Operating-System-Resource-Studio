@@ -215,3 +215,11 @@ PRESETS: dict[str, dict] = {
             {"pid": "P3", "arrival": 3, "burst": 1, "priority": 2},
             {"pid": "P4", "arrival": 16, "burst": 4, "priority": 1},
             {"pid": "P5", "arrival": 17, "burst": 3, "priority": 2},
+        ],
+        "memory": {
+            "blocks": [150, 350, 250, 450, 180],
+            "requests": [140, 200, 310, 175, 90],
+        },
+        "deadlock": {
+            "available": [2, 3, 0],
+            "allocation": [
