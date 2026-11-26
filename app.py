@@ -1671,3 +1671,12 @@ class TestDisk(unittest.TestCase):
     def test_sample_disk(self) -> None:
         ds = get_preset("Lab Standard (Default)")["disk"]
         fcfs = disk_schedule(ds["requests"], ds["head"], "fcfs", ds["disk_size"], ds["direction"])
+        sstf = disk_schedule(ds["requests"], ds["head"], "sstf", ds["disk_size"], ds["direction"])
+        scan = disk_schedule(ds["requests"], ds["head"], "scan", ds["disk_size"], ds["direction"])
+        self.assertEqual(fcfs["total_movement"], 640)
+        self.assertEqual(sstf["total_movement"], 236)
+        self.assertEqual(scan["total_movement"], 331)
+class TestChartsAndPresets(unittest.TestCase):
+    def test_all_presets_and_charts(self) -> None:
+        for name in PRESETS:
+            ds = get_preset(name)
