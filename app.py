@@ -1506,3 +1506,12 @@ def _build_export_tables(all_res: dict) -> tuple[pd.DataFrame, pd.DataFrame, pd.
         ]
     )
     disk_df = pd.DataFrame(
+        [
+            {
+                "algorithm": a,
+                "total_movement": r["total_movement"],
+                "average_movement": round(r["average_movement"], 4),
+                "order": str(r["order"]),
+            }
+            for a, r in all_res["disk"].items()
+        ]
