@@ -501,3 +501,11 @@ def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_
                 "block": chosen + 1 if chosen is not None else None,
                 "remaining_in_block": free[chosen] if chosen is not None else None,
                 "allocated": chosen is not None,
+            }
+        )
+
+    total_capacity = sum(blocks)
+    total_allocated = sum(r["size"] for r in rows if r["allocated"])
+    total_free = sum(free)
+    allocated_count = sum(1 for r in rows if r["allocated"])
+
