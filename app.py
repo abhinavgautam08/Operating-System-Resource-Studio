@@ -726,3 +726,12 @@ def compute_all_subsystems(ds: dict) -> dict:
     }
 
     return {
+        "scheduling": cpu_results,
+        "memory": mem_results,
+        "deadlock": dl_result,
+        "disk": disk_results,
+    }
+
+
+def _pid_sort_key(pid: str) -> tuple:
+    prefix, digits = re.match(r"^(\D*)(\d*)", str(pid)).groups()
