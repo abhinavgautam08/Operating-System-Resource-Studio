@@ -1480,3 +1480,12 @@ def render_disk_page(ds: dict) -> None:
 
 
 def _build_export_tables(all_res: dict) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    sched_df = pd.DataFrame(
+        [
+            {
+                "algorithm": a,
+                "avg_waiting": round(r["avg_waiting"], 4),
+                "avg_turnaround": round(r["avg_turnaround"], 4),
+                "avg_response": round(r["avg_response"], 4),
+                "makespan": r["makespan"],
+                "cpu_utilization": round(r["cpu_utilization"], 2),
