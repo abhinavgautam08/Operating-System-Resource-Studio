@@ -596,3 +596,12 @@ def request_resources(
         return {"granted": False, "reason": "Request exceeds declared remaining need."}
     if any(request[j] > available[j] for j in range(len(request))):
         return {"granted": False, "reason": "Requested resources exceed currently available units."}
+
+    next_alloc = [row[:] for row in allocation]
+    next_avail = list(available)
+    for j, amount in enumerate(request):
+        next_alloc[process][j] += amount
+        next_avail[j] -= amount
+
+    check = banker_safety(next_avail, next_alloc, maximum)
+    reason = "Safe state preserved" if check["safe"] else "Request would leave the system in an unsafe state"
