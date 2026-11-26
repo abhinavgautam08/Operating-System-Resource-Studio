@@ -795,3 +795,12 @@ def make_gantt(segments: list[dict]) -> go.Figure:
                 insidetextanchor="middle",
                 textfont=dict(family=MONO, size=10, color="#FFFFFF"),
                 hovertemplate=(
+                    f"<b>{seg['pid']}</b><br>"
+                    f"start&nbsp;&nbsp;{seg['start']}<br>"
+                    f"end&nbsp;&nbsp;&nbsp;&nbsp;{seg['end']}<br>"
+                    f"duration&nbsp;{duration}"
+                    "<extra></extra>"
+                ),
+            )
+        )
+
