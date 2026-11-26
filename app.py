@@ -683,3 +683,11 @@ def disk_schedule(
                 "from": prev,
                 "to": target,
                 "distance": dist,
+                "cumulative": total,
+            }
+        )
+
+    return {
+        "algorithm": alg,
+        "head": head,
+        "direction": dir_norm,
