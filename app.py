@@ -15,3 +15,12 @@ if __name__ == "__main__":
     else:
         _RUN_TESTS_ON_MAIN = False
         from streamlit.runtime.scriptrunner import get_script_run_ctx
+
+        if get_script_run_ctx() is None:
+            from streamlit.web import cli as stcli
+
+            sys.argv = ["streamlit", "run", __file__, *sys.argv[1:]]
+            sys.exit(stcli.main())
+else:
+    _RUN_TESTS_ON_MAIN = False
+
