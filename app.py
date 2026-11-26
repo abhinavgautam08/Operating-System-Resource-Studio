@@ -76,3 +76,12 @@ html, body, .stApp{background:var(--paper); color:var(--ink);}
   padding:0.9rem 0 1.1rem; margin-bottom:0.6rem;
   border-bottom:1px solid var(--rule);
 }
+.top-brand{display:flex; align-items:center; gap:14px;}
+.top-logo{
+  font-family:'IBM Plex Mono',monospace; font-size:.82rem; letter-spacing:.12em;
+  font-weight:600; color:var(--accent); border:1px solid var(--accent);
+  padding:.22rem .5rem; border-radius:2px;
+}
+.top-title{
+  font-family:'Source Serif 4',Georgia,serif; font-size:1.45rem; font-weight:600;
+  color:var(--ink); letter-spacing:-.01em;
