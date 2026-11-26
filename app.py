@@ -1316,3 +1316,11 @@ def render_memory_page(ds: dict) -> None:
             trace_df["block"] = trace_df["block"].apply(lambda b: f"Block {int(b)}" if pd.notna(b) else "—")
             trace_df["remaining_in_block"] = trace_df["remaining_in_block"].apply(lambda v: str(int(v)) if pd.notna(v) else "—")
             st.dataframe(trace_df, width="stretch", hide_index=True)
+        with t_cmp:
+            cmp_rows = [
+                {
+                    "Strategy": s.replace("_", " ").title(),
+                    "Allocated": f"{r['allocated_count']}/{len(r['allocations'])}",
+                    "Utilization (%)": round(r["utilization_pct"], 1),
+                    "Remaining Free": r["total_free"],
+                    "Final Free Vector": str(r["final_free"]),
