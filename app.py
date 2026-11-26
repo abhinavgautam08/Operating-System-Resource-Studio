@@ -353,3 +353,12 @@ def _cpu_metrics(
     cpu_utilization = (total_burst / makespan * 100.0) if makespan > 0 else 0.0
     throughput = (len(processes) / makespan) if makespan > 0 else 0.0
 
+    segments = _build_segments_with_idle(timeline)
+    non_idle = [s for s in segments if s["pid"] != "IDLE"]
+    context_switches = max(0, len(non_idle) - 1)
+
+    return {
+        "algorithm": algorithm,
+        "processes": rows,
+        "timeline": timeline,
+        "segments": segments,
