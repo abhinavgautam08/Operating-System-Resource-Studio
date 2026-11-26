@@ -1281,3 +1281,12 @@ def render_memory_page(ds: dict) -> None:
         blocks_text = st.text_input("Free Memory Blocks (comma-separated)", value=", ".join(map(str, ds["memory"]["blocks"])))
     with c2:
         reqs_text = st.text_input("Incoming Requests (comma-separated)", value=", ".join(map(str, ds["memory"]["requests"])))
+    with c3:
+        strat = st.selectbox(
+            "Allocation Strategy",
+            strategies,
+            index=strategies.index(st.session_state.mem_strat),
+            format_func=lambda s: s.replace("_", " ").title(),
+        )
+        st.session_state.mem_strat = strat
+
