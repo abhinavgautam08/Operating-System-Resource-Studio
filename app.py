@@ -1394,3 +1394,11 @@ def render_deadlock_page(ds: dict) -> None:
             rc1, rc2, rc3 = st.columns([1, 2, 1])
             with rc1:
                 req_proc = st.number_input("Process Index (0-based)", min_value=0, max_value=max(0, len(allocation) - 1), value=0, step=1)
+            with rc2:
+                req_vec_text = st.text_input("Request Vector (comma-separated)", value=", ".join(["0"] * len(available)))
+            with rc3:
+                st.write("")
+                st.write("")
+                check_btn = st.button("Evaluate Request", type="primary", width="stretch")
+            if check_btn:
+                req_res = request_resources(available, allocation, maximum, int(req_proc), parse_int_list(req_vec_text))
