@@ -1680,3 +1680,11 @@ class TestChartsAndPresets(unittest.TestCase):
     def test_all_presets_and_charts(self) -> None:
         for name in PRESETS:
             ds = get_preset(name)
+            procs = [Process(**p) for p in ds["processes"]]
+            cpu_res = {a: cpu_schedule(procs, a, ds["quantum"]) for a in ("fcfs", "sjf", "priority", "rr")}
+            mem_res = {s: mem_allocate(ds["memory"]["blocks"], ds["memory"]["requests"], s) for s in ("first_fit", "best_fit", "worst_fit")}
+            disk_res = {a: disk_schedule(ds["disk"]["requests"], ds["disk"]["head"], a, ds["disk"]["disk_size"], ds["disk"]["direction"]) for a in ("fcfs", "sstf", "scan")}
+
+            self.assertIsNotNone(make_gantt(cpu_res["fcfs"]["segments"]))
+            self.assertIsNotNone(make_cpu_comparison_chart(cpu_res))
+            self.assertIsNotNone(make_memory_map(mem_res["best_fit"]))
