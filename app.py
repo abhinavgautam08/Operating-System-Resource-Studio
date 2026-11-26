@@ -674,3 +674,12 @@ def disk_schedule(
 
     for step_idx, target in enumerate(order, 1):
         prev = path[-1]
+        dist = abs(target - prev)
+        total += dist
+        path.append(target)
+        step_distances.append(
+            {
+                "step": step_idx,
+                "from": prev,
+                "to": target,
+                "distance": dist,
