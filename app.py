@@ -1142,3 +1142,12 @@ def render_overview_page(ds: dict) -> None:
         )
 
         c_left, c_right = st.columns(2)
+        with c_left:
+            st.plotly_chart(make_memory_comparison_chart(mem_res), width="stretch", config={"displaylogo": False})
+        with c_right:
+            st.plotly_chart(make_disk_comparison_chart(disk_res), width="stretch", config={"displaylogo": False})
+
+        st.markdown("### Subsystem Export")
+        ex1, ex2 = st.columns([3, 1])
+        with ex1:
+            st.markdown(
