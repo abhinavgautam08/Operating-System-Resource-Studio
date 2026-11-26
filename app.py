@@ -1246,3 +1246,12 @@ def render_cpu_page(ds: dict) -> None:
         st.plotly_chart(
             make_gantt(active_res["segments"]),
             width="stretch",
+            config={"displaylogo": False, "scrollZoom": True},
+        )
+
+        st.markdown("### All-Policy Comparison")
+        summary_rows = [
+            {
+                "Algorithm": a.upper(),
+                "Avg Waiting": round(r["avg_waiting"], 2),
+                "Avg Turnaround": round(r["avg_turnaround"], 2),
