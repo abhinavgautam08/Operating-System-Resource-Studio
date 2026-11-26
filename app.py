@@ -1411,3 +1411,12 @@ def render_deadlock_page(ds: dict) -> None:
         st.error(f"Deadlock check error: {exc}")
 
 
+def render_disk_page(ds: dict) -> None:
+    header(
+        "Subsystem 04 · Storage",
+        "Disk Head Scheduling",
+        "Compare FCFS, Shortest Seek Time First (SSTF), and directional SCAN sweep across cylinder requests.",
+    )
+
+    dsk = ds["disk"]
+    algs = ["fcfs", "sstf", "scan"]
