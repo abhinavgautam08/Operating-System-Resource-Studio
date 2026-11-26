@@ -457,3 +457,12 @@ def cpu_schedule(processes: list[Process], algorithm: str = "fcfs", quantum: int
     if alg == "rr":
         completion, timeline = _run_round_robin(ps, quantum)
     else:
+        completion, timeline = _run_non_preemptive(ps, alg)
+
+    return _cpu_metrics(ps, completion, timeline, alg)
+
+
+def _choose_memory_block(free: list[int], size: int, strat: str) -> int | None:
+    candidates = [i for i, space in enumerate(free) if space >= size]
+    if not candidates:
+        return None
