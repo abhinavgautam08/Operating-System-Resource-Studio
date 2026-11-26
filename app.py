@@ -952,3 +952,11 @@ def make_disk_head_chart(disk_result: dict) -> go.Figure:
 
     fig = go.Figure()
     fig.add_trace(
+        go.Scatter(
+            x=path,
+            y=steps,
+            mode="lines+markers+text",
+            line=dict(color=PALETTE[0], width=2),
+            marker=dict(color=PALETTE[0], size=7, line=dict(color=SURFACE, width=1.5)),
+            text=[str(p) for p in path],
+            textposition="top right",
