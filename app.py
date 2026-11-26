@@ -1272,3 +1272,12 @@ def render_memory_page(ds: dict) -> None:
     header(
         "Subsystem 02 · Memory",
         "Contiguous Memory Allocation",
+        "Simulate First Fit, Best Fit, and Worst Fit partitioning across fixed free blocks, inspect fragmentation, and visualize block occupancy.",
+    )
+
+    strategies = ["first_fit", "best_fit", "worst_fit"]
+    c1, c2, c3 = st.columns([2, 2, 1.5])
+    with c1:
+        blocks_text = st.text_input("Free Memory Blocks (comma-separated)", value=", ".join(map(str, ds["memory"]["blocks"])))
+    with c2:
+        reqs_text = st.text_input("Incoming Requests (comma-separated)", value=", ".join(map(str, ds["memory"]["requests"])))
