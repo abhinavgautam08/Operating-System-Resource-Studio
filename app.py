@@ -743,3 +743,12 @@ def style_fig(fig: go.Figure, title: str = "", height: int = 320) -> go.Figure:
     fig.update_layout(
         paper_bgcolor=SURFACE,
         plot_bgcolor=SURFACE,
+        height=height,
+        font=dict(family=MONO, size=11, color=MUTED),
+        title=title_cfg,
+        margin=dict(l=48, r=20, t=48 if title else 20, b=44),
+        legend=dict(bgcolor="rgba(0,0,0,0)", font=dict(size=10, color=MUTED), title=None),
+        hoverlabel=dict(bgcolor=SURFACE, bordercolor=RULE, font=dict(family=MONO, size=11, color=INK)),
+        xaxis=dict(
+            gridcolor=GRID,
+            linecolor=IDLE,
