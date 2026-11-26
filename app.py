@@ -709,3 +709,11 @@ def compute_all_subsystems(ds: dict) -> dict:
         strat: mem_allocate(ds["memory"]["blocks"], ds["memory"]["requests"], strat)
         for strat in ("first_fit", "best_fit", "worst_fit")
     }
+    dl_result = banker_safety(
+        ds["deadlock"]["available"],
+        ds["deadlock"]["allocation"],
+        ds["deadlock"]["maximum"],
+    )
+    disk_results = {
+        alg: disk_schedule(
+            ds["disk"]["requests"],
