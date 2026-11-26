@@ -414,3 +414,12 @@ def _run_round_robin(processes: list[Process], quantum: int) -> tuple[dict[str, 
     completion: dict[str, int] = {}
     timeline: list[tuple[int, int, str]] = []
 
+    while index < len(arrivals) or ready:
+        if not ready and index < len(arrivals) and now < arrivals[index].arrival:
+            now = arrivals[index].arrival
+
+        while index < len(arrivals) and arrivals[index].arrival <= now:
+            ready.append(arrivals[index])
+            index += 1
+
+        current = ready.popleft()
