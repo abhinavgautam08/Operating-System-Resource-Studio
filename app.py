@@ -163,3 +163,11 @@ p, li{font-size:.95rem; line-height:1.6; color:var(--muted);}
 [data-testid="stDataFrame"]{border:1px solid var(--rule); border-radius:2px; overflow:hidden;}
 [data-testid="stDataFrame"] *{font-family:'IBM Plex Mono',monospace !important; font-size:.78rem !important;}
 
+hr{border:none; border-top:1px solid var(--rule); margin:1.6rem 0;}
+.footer{font-family:'IBM Plex Mono',monospace; font-size:.66rem; color:var(--faint);
+  border-top:1px solid var(--rule); padding-top:.8rem; margin-top:3rem; letter-spacing:.04em;}
+.note{font-family:'IBM Plex Mono',monospace; font-size:.7rem; color:var(--faint); line-height:1.6;}
+</style>
+"""
+
+PRESETS: dict[str, dict] = {
