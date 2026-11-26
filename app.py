@@ -362,3 +362,12 @@ def _cpu_metrics(
         "processes": rows,
         "timeline": timeline,
         "segments": segments,
+        "avg_waiting": sum(r["waiting"] for r in rows) / len(rows),
+        "avg_turnaround": sum(r["turnaround"] for r in rows) / len(rows),
+        "avg_response": sum(r["response"] for r in rows) / len(rows),
+        "makespan": makespan,
+        "cpu_utilization": cpu_utilization,
+        "throughput": throughput,
+        "context_switches": context_switches,
+    }
+
