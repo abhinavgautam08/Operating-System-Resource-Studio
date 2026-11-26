@@ -509,3 +509,12 @@ def mem_allocate(blocks: list[int], requests: list[int], strategy: str = "first_
     total_free = sum(free)
     allocated_count = sum(1 for r in rows if r["allocated"])
 
+    return {
+        "strategy": strat,
+        "allocations": rows,
+        "initial_blocks": list(blocks),
+        "final_free": free,
+        "block_contents": block_contents,
+        "allocated_count": allocated_count,
+        "unallocated_count": len(rows) - allocated_count,
+        "total_capacity": total_capacity,
